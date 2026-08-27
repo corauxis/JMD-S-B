@@ -263,7 +263,9 @@
   flex: 1;
   display: flex;
   justify-content: flex-end;
+  align-items: flex-end;
   min-width: 0;
+  overflow: visible;
 }
 
 .liquid-hero__title {

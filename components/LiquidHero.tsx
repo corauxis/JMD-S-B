@@ -135,6 +135,8 @@ function LiquidImage({
 }
 */
 
+import Logo3DCanvas from "./Logo3DCanvas";
+
 interface LiquidHeroProps {
   image?: string;
   eyebrow?: string;
@@ -180,17 +182,29 @@ export default function LiquidHero({
   return (
     <section className="liquid-hero">
       {/* 
-        Parallax Background Image (moves up on scroll down, vice versa — very slow and smooth)
+        Hero Background Video (loops seamlessly, muted, autoplay, playsInline)
       */}
       <div className="liquid-hero__bg-container">
-        <img
-          src={image}
-          alt="Hero Background"
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
           className="liquid-hero__bg-img"
           style={{
             transform: `translate3d(0, -${scrollY * 0.08}px, 0)`,
           }}
-        />
+        >
+          <source src="/images/6804109-uhd_4096_2160_25fps.mp4" type="video/mp4" />
+          {/* Fallback image */}
+          <img
+            src={image}
+            alt="Hero Background"
+            className="liquid-hero__bg-img"
+          />
+        </video>
+        {/* Subtle dark overlay for text contrast */}
+        <div className="absolute inset-0 bg-black/30 pointer-events-none" />
       </div>
 
       {/* Decorative Plus Symbols (+) */}
@@ -259,14 +273,14 @@ export default function LiquidHero({
         <div className="liquid-hero__subtext-block">
           <p className="liquid-hero__eyebrow">{eyebrow}</p>
           <div className="liquid-hero__within">{withinText}</div>
-          <a href="#about" className="liquid-hero__explore">
+          <a href="#contact" className="liquid-hero__explore">
             <span>Explore Now</span>
             <span className="liquid-hero__explore-arrow">┐</span>
           </a>
         </div>
       </div>
 
-      {/* Bottom Row: Left Info (Tag + Meter) & Shifted Right CORAUXIS Title */}
+      {/* Bottom Row: Left Info (Tag + Meter) & Shifted Right 3D CORAUXIS Model */}
       <div className="liquid-hero__bottom-row">
         
         {/* Bottom Left Info Stack */}
@@ -294,8 +308,15 @@ export default function LiquidHero({
           </div>
         </div>
 
-        {/* Shifted Right CORAUXIS Title */}
-        <div className="liquid-hero__title-container">
+        {/* 3D Moving Model (Commented out per user request) */}
+        {/*
+        <div className="liquid-hero__title-container pointer-events-auto">
+          <Logo3DCanvas className="w-full max-w-[1050px] h-[150px] sm:h-[190px] md:h-[240px] lg:h-[300px] xl:h-[340px]" />
+        </div>
+        */}
+
+        {/* Static Title Text */}
+        <div className="liquid-hero__title-container pointer-events-none">
           <h1 className="liquid-hero__title">{title}</h1>
         </div>
 

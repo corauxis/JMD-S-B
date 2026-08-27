@@ -1,8 +1,22 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+
+const categoryOptions = [
+  "AI Strategy & Mapping",
+  "AI UX & Product Design",
+  "LLM / Agent Development",
+  "Data Engineering & Pipelines",
+  "End-to-End AI Solution",
+  "Art Direction / Branding",
+  "General Inquiry / Other",
+];
 
 export default function Footer() {
+  const footerRef = useRef<HTMLElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [circleProgress, setCircleProgress] = useState(0);
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -10,6 +24,7 @@ export default function Footer() {
     email: "",
     message: "",
   });
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [honeypot, setHoneypot] = useState("");
   const [loadTime, setLoadTime] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -18,8 +33,64 @@ export default function Footer() {
     text: string;
   }>({ type: "", text: "" });
 
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     setLoadTime(Date.now());
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // Close custom dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Continuous RAF scroll tracker for booming circle expansion in middle (Synced with Lenis physics)
+  useEffect(() => {
+    let animationFrameId: number;
+    let currentProgress = 0;
+
+    const updateCircle = () => {
+      if (window.innerWidth < 640) {
+        setCircleProgress(1);
+        return;
+      }
+      if (footerRef.current) {
+        const rect = footerRef.current.getBoundingClientRect();
+        const windowHeight = typeof window !== "undefined" ? window.innerHeight : 900;
+
+        // Starts smoothly slightly earlier as you approach the bottom of Tools
+        const startPoint = windowHeight * 1.05;
+        // Smooth natural expansion range
+        const distanceToFull = windowHeight * 1.05;
+
+        const current = startPoint - rect.top;
+        const targetProgress = Math.min(Math.max(current / distanceToFull, 0), 1);
+
+        // Silky smooth inertia interpolation synced with Lenis
+        currentProgress += (targetProgress - currentProgress) * 0.12;
+        if (Math.abs(targetProgress - currentProgress) < 0.001) {
+          currentProgress = targetProgress;
+        }
+
+        setCircleProgress(currentProgress);
+      }
+      animationFrameId = requestAnimationFrame(updateCircle);
+    };
+
+    animationFrameId = requestAnimationFrame(updateCircle);
+    return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -58,7 +129,7 @@ export default function Footer() {
       if (res.ok && !data.error) {
         setStatusMsg({
           type: "success",
-          text: "Message sent successfully to sarthak.zfi@gmail.com! We will get back to you within 24 hours.",
+          text: "Message sent successfully to contact@corauxis.com! We will get back to you within 24 hours.",
         });
         setFormData({
           firstName: "",
@@ -76,7 +147,7 @@ export default function Footer() {
     } catch {
       setStatusMsg({
         type: "error",
-        text: "Network error. You can also reach out directly to sarthak.zfi@gmail.com",
+        text: "Network error. You can also reach out directly to contact@corauxis.com",
       });
     } finally {
       setLoading(false);
@@ -85,10 +156,53 @@ export default function Footer() {
 
   return (
     <footer
+      ref={footerRef}
       id="contact"
-      className="relative bg-[#09090b] text-white pt-20 sm:pt-28 md:pt-36 pb-12 sm:pb-16 px-4 sm:px-6 md:px-10 lg:px-16 overflow-hidden select-none"
+      className="relative z-30 bg-white text-white pt-10 sm:pt-20 md:pt-28 pb-10 sm:pb-16 md:pb-24 px-3 sm:px-8 md:px-12 lg:px-16 overflow-x-clip overflow-y-visible select-none"
     >
-      <div className="max-w-[1760px] w-full mx-auto">
+      {/* ========================================================
+          EXPANDING BOOMING CIRCLE (Overflows on Top of Upper Fold, Clipped at Bottom)
+         ======================================================== */}
+      <div
+        className="hidden sm:flex absolute inset-0 items-center justify-center pointer-events-none z-20 overflow-visible"
+        style={{
+          clipPath: "inset(-1400px -1400px 0px -1400px)",
+        }}
+      >
+        <div
+          className="relative w-[1400px] sm:w-[1800px] md:w-[2200px] lg:w-[2700px] aspect-square rounded-full pointer-events-none"
+          style={{
+            transform: `translate3d(0, ${(1 - circleProgress) * 320 - 80}px, 0) scale(${0.70 + circleProgress * 1.50})`,
+            opacity: circleProgress <= 0.01 ? 0 : Math.min(circleProgress * 2.5, 1),
+            transformOrigin: "center center",
+            transition: "transform 0.1s linear, opacity 0.15s ease-out",
+            willChange: "transform, opacity",
+          }}
+        >
+          {/* Radiant Red/Coral Booming Horizon Dome */}
+          <div className="w-full h-full rounded-full bg-gradient-to-t from-[#FD3A25] via-[#ff4a34] to-[#FD3A25] opacity-98 shadow-[0_-40px_160px_rgba(253,58,37,0.6),0_-15px_70px_rgba(255,255,255,0.2)]" />
+          
+          {/* Soft Radial Ambient Lighting Aura */}
+          <div className="absolute -top-[12%] left-1/2 -translate-x-1/2 w-[95%] h-[50%] bg-[#ff7a6b]/45 rounded-full blur-[90px] sm:blur-[140px]" />
+        </div>
+      </div>
+
+      {/* ========================================================
+          INNER FLOATING FOOTER BOX (Scales on Desktop, Static on Mobile)
+         ======================================================== */}
+      <div
+        className="relative z-30 max-w-[1720px] w-full mx-auto rounded-[24px] sm:rounded-[44px] md:rounded-[56px] bg-[#0d0d10] border border-white/10 shadow-[0_24px_80px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.1)] p-5 sm:p-10 md:p-14 lg:p-18 overflow-hidden"
+        style={
+          !isMobile
+            ? {
+                transform: `translate3d(0, ${(1 - circleProgress) * 75}px, 0) scale(${0.84 + circleProgress * 0.16})`,
+                transformOrigin: "center top",
+                transition: "transform 0.08s linear",
+                willChange: "transform",
+              }
+            : undefined
+        }
+      >
         
         {/* ========================================================
             TOP SECTION: Contact Form Block (2 Columns)
@@ -96,7 +210,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-stretch">
           
           {/* Left Column: Dark box with Minimalist Stepped Icon */}
-          <div className="lg:col-span-5 hidden sm:flex items-center justify-center rounded-[28px] bg-[#121215] border border-white/5 min-h-[380px] lg:min-h-[520px] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
+          <div className="lg:col-span-5 hidden sm:flex items-center justify-center rounded-[28px] bg-[#141418] border border-white/5 min-h-[380px] lg:min-h-[500px] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
             <div className="relative w-16 h-16 flex items-center justify-center">
               {/* Stepped pixel icon */}
               <div className="relative w-12 h-12">
@@ -154,7 +268,7 @@ export default function Footer() {
                     onChange={(e) =>
                       setFormData({ ...formData, firstName: e.target.value })
                     }
-                    className="w-full bg-transparent border-b border-zinc-700/80 pb-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-white transition-colors font-medium font-[family-name:var(--font-urbanist)]"
+                    className="w-full bg-transparent border-b border-zinc-700/80 pb-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#FD3A25] transition-colors font-medium font-[family-name:var(--font-urbanist)]"
                   />
                 </div>
 
@@ -172,52 +286,69 @@ export default function Footer() {
                     onChange={(e) =>
                       setFormData({ ...formData, lastName: e.target.value })
                     }
-                    className="w-full bg-transparent border-b border-zinc-700/80 pb-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-white transition-colors font-medium font-[family-name:var(--font-urbanist)]"
+                    className="w-full bg-transparent border-b border-zinc-700/80 pb-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#FD3A25] transition-colors font-medium font-[family-name:var(--font-urbanist)]"
                   />
                 </div>
               </div>
 
-              {/* Row 2: Category & Email with Browser Auto-fill */}
+              {/* Row 2: Premium Custom Dropdown & Email */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 sm:gap-10">
-                <div className="flex flex-col relative">
+                
+                {/* Custom Glassmorphism Dropdown */}
+                <div ref={dropdownRef} className="flex flex-col relative">
                   <label className="text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-2 font-[family-name:var(--font-urbanist)]">
                     Category
                   </label>
-                  <div className="relative">
-                    <select
-                      name="category"
-                      value={formData.category}
-                      onChange={(e) =>
-                        setFormData({ ...formData, category: e.target.value })
-                      }
-                      className="w-full bg-transparent border-b border-zinc-700/80 pb-2.5 text-sm text-white focus:outline-none focus:border-white transition-colors appearance-none cursor-pointer font-medium font-[family-name:var(--font-urbanist)] pr-8"
+                  
+                  {/* Dropdown Trigger Button */}
+                  <button
+                    type="button"
+                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                    className="w-full bg-transparent border-b border-zinc-700/80 pb-2.5 text-left text-sm text-white focus:outline-none focus:border-[#FD3A25] transition-colors flex items-center justify-between font-medium font-[family-name:var(--font-urbanist)] cursor-pointer group"
+                  >
+                    <span className={formData.category ? "text-white font-medium" : "text-zinc-400"}>
+                      {formData.category || "Select a category..."}
+                    </span>
+                    <span
+                      className={`text-xs text-zinc-400 transition-transform duration-300 ${
+                        isDropdownOpen ? "rotate-180 text-[#FD3A25]" : "group-hover:text-white"
+                      }`}
                     >
-                      <option value="" className="bg-[#121215] text-zinc-400">
-                        Select
-                      </option>
-                      <option value="AI Strategy & Mapping" className="bg-[#121215] text-white">
-                        AI Strategy &amp; Mapping
-                      </option>
-                      <option value="AI UX & Product Design" className="bg-[#121215] text-white">
-                        AI UX &amp; Product Design
-                      </option>
-                      <option value="LLM / Agent Development" className="bg-[#121215] text-white">
-                        LLM / Agent Development
-                      </option>
-                      <option value="Data Engineering & Pipelines" className="bg-[#121215] text-white">
-                        Data Engineering &amp; Pipelines
-                      </option>
-                      <option value="Art Direction" className="bg-[#121215] text-white">
-                        Art Direction
-                      </option>
-                    </select>
-                    {/* Down Chevron icon */}
-                    <span className="absolute right-1 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-400 text-xs">
                       ▼
                     </span>
-                  </div>
+                  </button>
+
+                  {/* Dropdown Menu Overlay */}
+                  {isDropdownOpen && (
+                    <div className="absolute top-full left-0 mt-2.5 w-full z-50 rounded-2xl bg-[#17171b]/98 border border-white/15 backdrop-blur-2xl shadow-[0_24px_50px_rgba(0,0,0,0.9),0_0_0_1px_rgba(255,255,255,0.08)] py-2 overflow-hidden animate-fadeIn">
+                      {categoryOptions.map((opt) => {
+                        const isSelected = formData.category === opt;
+                        return (
+                          <button
+                            key={opt}
+                            type="button"
+                            onClick={() => {
+                              setFormData({ ...formData, category: opt });
+                              setIsDropdownOpen(false);
+                            }}
+                            className={`w-full px-4 py-2.5 text-left text-xs sm:text-sm font-medium font-[family-name:var(--font-urbanist)] transition-all flex items-center justify-between ${
+                              isSelected
+                                ? "bg-[#FD3A25]/15 text-[#FD3A25] font-semibold"
+                                : "text-zinc-300 hover:bg-white/10 hover:text-white"
+                            }`}
+                          >
+                            <span>{opt}</span>
+                            {isSelected && (
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#FD3A25]" />
+                            )}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
 
+                {/* Email Address */}
                 <div className="flex flex-col">
                   <label className="text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-2 font-[family-name:var(--font-urbanist)]">
                     Your Email Address*
@@ -232,7 +363,7 @@ export default function Footer() {
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className="w-full bg-transparent border-b border-zinc-700/80 pb-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-white transition-colors font-medium font-[family-name:var(--font-urbanist)]"
+                    className="w-full bg-transparent border-b border-zinc-700/80 pb-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#FD3A25] transition-colors font-medium font-[family-name:var(--font-urbanist)]"
                   />
                 </div>
               </div>
@@ -257,7 +388,7 @@ export default function Footer() {
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
                   }
-                  className="w-full bg-transparent border-b border-zinc-700/80 pb-2 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-white transition-colors resize-none font-medium font-[family-name:var(--font-urbanist)]"
+                  className="w-full bg-transparent border-b border-zinc-700/80 pb-2 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#FD3A25] transition-colors resize-none font-medium font-[family-name:var(--font-urbanist)]"
                 />
               </div>
 
@@ -279,7 +410,7 @@ export default function Footer() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-4 rounded-xl sm:rounded-2xl bg-[#222225] hover:bg-[#2e2e34] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium text-sm sm:text-base tracking-wide transition-all duration-300 shadow-[0_8px_20px_rgba(0,0,0,0.3)] font-[family-name:var(--font-urbanist)] flex items-center justify-center gap-2"
+                  className="w-full py-4 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[#1c1c20] to-[#25252a] hover:from-[#FD3A25] hover:to-[#ff523d] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-sm sm:text-base tracking-wide transition-all duration-300 shadow-[0_8px_24px_rgba(0,0,0,0.4)] font-[family-name:var(--font-urbanist)] flex items-center justify-center gap-2 border border-white/10 hover:border-transparent cursor-pointer"
                 >
                   {loading ? (
                     <>
@@ -299,7 +430,7 @@ export default function Footer() {
         {/* ========================================================
             SEPARATOR
            ======================================================== */}
-        <div className="w-full h-px bg-zinc-800/80 my-16 sm:my-24 md:my-28" />
+        <div className="w-full h-px bg-zinc-800/80 my-16 sm:my-22 md:my-26" />
 
         {/* ========================================================
             MIDDLE SECTION: Contact Details & Navigation Columns
@@ -313,10 +444,10 @@ export default function Footer() {
                 Let’s work together
               </h3>
               <a
-                href="mailto:sarthak.zfi@gmail.com"
+                href="mailto:contact@corauxis.com"
                 className="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight block mt-2 hover:text-[#FD3A25] transition-colors font-[family-name:var(--font-urbanist)] break-all"
               >
-                sarthak.zfi@gmail.com
+                contact@corauxis.com
               </a>
             </div>
 
@@ -340,10 +471,10 @@ export default function Footer() {
                   EMAIL
                 </span>
                 <a
-                  href="mailto:support@m-auxis.com"
+                  href="mailto:contact@corauxis.com"
                   className="text-sm sm:text-base text-zinc-300 hover:text-white font-medium transition-colors font-[family-name:var(--font-urbanist)]"
                 >
-                  support@m-auxis.com
+                  contact@corauxis.com
                 </a>
               </div>
             </div>
@@ -399,11 +530,26 @@ export default function Footer() {
               CONNECT
             </span>
             {[
-              { label: "LINKEDIN", href: "https://linkedin.com" },
-              { label: "FACEBOOK", href: "https://facebook.com" },
-              { label: "TWITTER", href: "https://x.com" },
-              { label: "INSTAGRAM", href: "https://instagram.com" },
-              { label: "YOUTUBE", href: "https://youtube.com" },
+              {
+                label: "LINKEDIN",
+                href: "https://www.linkedin.com/company/jmd-solutions-and-beyond/posts/?feedView=all",
+              },
+              {
+                label: "FACEBOOK",
+                href: "https://www.facebook.com/share/1aib9wbX6V/",
+              },
+              {
+                label: "TWITTER",
+                href: "https://x.com/jmd_sol_beyond?s=21",
+              },
+              {
+                label: "INSTAGRAM",
+                href: "https://www.instagram.com/jmd_solutions_beyond?igsh=dzVseWNzYXU5aXNs&utm_source=qr",
+              },
+              {
+                label: "YOUTUBE",
+                href: "https://youtube.com/@jmdsolutionbeyond?si=UUOXooZ6-wAbl_hb",
+              },
             ].map((social) => (
               <a
                 key={social.label}
@@ -477,11 +623,9 @@ export default function Footer() {
           <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-3 gap-y-1.5 text-center sm:text-left">
             <span>© 2026 CorAuxis. All rights reserved.</span>
             <span>•</span>
-            <a href="#" className="hover:text-zinc-300 transition-colors">Terms &amp; Conditions</a>
+            <a href="/terms" className="hover:text-zinc-300 transition-colors">Terms &amp; Conditions</a>
             <span>•</span>
-            <a href="#" className="hover:text-zinc-300 transition-colors">Privacy Policy</a>
-            <span>•</span>
-            <a href="#" className="hover:text-zinc-300 transition-colors">Deletion Policy</a>
+            <a href="/privacy" className="hover:text-zinc-300 transition-colors">Privacy Policy</a>
           </div>
 
           <div className="text-zinc-500 font-medium">

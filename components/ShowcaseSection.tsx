@@ -2,39 +2,76 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import {
+  FileText,
+  BarChart3,
+  Car,
+  Scale,
+  Briefcase,
+  Landmark,
+  Target,
+  TrendingUp,
+  Megaphone,
+  Home,
+  ClipboardList,
+  Building2,
+} from "lucide-react";
 
-const projects = [
+interface ProjectItem {
+  title: string;
+  description: string;
+  deliverables: string;
+  industry: string;
+  image: string;
+  descIcon: typeof FileText;
+  delivIcon: typeof BarChart3;
+  industryIcon: typeof Car;
+}
+
+const projects: ProjectItem[] = [
   {
-    title: "Support Copilot for SaaS",
+    title: "AI-Driven Dealership Excellence",
     description:
-      "Draft replies and pulls account context; reduced first-response time by 38%.",
-    deliverables: "AI strategy, AI UX flows, LLM agent, RAG",
-    industry: "SaaS",
-    image: "/images/showcase/project-1.png",
+      "Automated workflows pulling vehicle telemetry and service history; reducing manual entry time by 45%.",
+    deliverables: "Predictive analytics dashboard, AI service scheduling, parts inventory forecasting.",
+    industry: "Automotive / Fleet Optimization",
+    image: "/images/showcase/dealership.png",
+    descIcon: FileText,
+    delivIcon: BarChart3,
+    industryIcon: Car,
   },
   {
-    title: "Underwriting Risk Copilot",
+    title: "LegalRobe Lawyer Management Software",
     description:
-      "Built a triage assistant to summarize claims; cut manual review time by 42%.",
-    deliverables: "Use-case mapping, Prompt & UI patterns",
-    industry: "Fintech",
-    image: "/images/showcase/project-2.png",
+      "All-in-one platform to manage cases, clients, documents, hearings, and billing; streamlining legal operations and boosting productivity.",
+    deliverables: "Case management, document automation, hearing scheduler, billing & invoicing, client portal, reports & analytics.",
+    industry: "Legal / Law Firms",
+    image: "/images/showcase/legalrobe.png",
+    descIcon: Scale,
+    delivIcon: Briefcase,
+    industryIcon: Landmark,
   },
   {
-    title: "Clinical Note Summarizer",
+    title: "M-Auxis Digital Marketing Platform",
     description:
-      "Clinic-lobby assistant answering pre-visit questions; decreased front-desk calls by 28%.",
-    deliverables: "AI strategy, AI UX flows, LLM agent, RAG",
-    industry: "Healthcare",
-    image: "/images/showcase/project-3.png",
+      "A complete digital marketing platform to strategize, execute, and optimize campaigns across channels, driving measurable results and growth.",
+    deliverables: "Campaign management, performance analytics, audience insights, social media management, email marketing, reports & competitor tracking.",
+    industry: "Marketing / Advertising / Agencies / Brands",
+    image: "/images/showcase/mauxis.png",
+    descIcon: Target,
+    delivIcon: TrendingUp,
+    industryIcon: Megaphone,
   },
   {
-    title: "Catalog Intelligence Engine",
+    title: "PG Management System",
     description:
-      "Launched a shopping copilot that understands attributes; raised add-to-cart by 12%.",
-    deliverables: "Data cleaning & embeddings",
-    industry: "E-Commerce",
-    image: "/images/showcase/project-4.jpg",
+      "Smart solution to manage your PG business effortlessly - from room bookings and rent collection to maintenance and member management.",
+    deliverables: "Room & occupancy management, rent collection, expense tracking, maintenance requests, notices & member communication.",
+    industry: "Real Estate / Hospitality / PG & Hostel Management",
+    image: "/images/showcase/pg_management.png",
+    descIcon: Home,
+    delivIcon: ClipboardList,
+    industryIcon: Building2,
   },
 ];
 
@@ -114,48 +151,66 @@ function ProjectCard({ project, idx }: { project: (typeof projects)[0]; idx: num
         </div>
 
         {/* Separator */}
-        <div className="w-full h-px bg-zinc-300/80 mb-5" />
+        <div className="w-full h-px bg-zinc-300/80 mb-6" />
 
         {/* Metadata Grid — animate after dots */}
         <div
           ref={metaRef}
-          className="sc-meta-hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.2fr_1.8fr_1.5fr_0.6fr] gap-y-5 gap-x-10 xl:gap-x-16"
+          className="sc-meta-hidden grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-8 xl:gap-x-12 items-start"
         >
-          {/* Title */}
-          <div>
-            <h3 className="text-2xl sm:text-3xl md:text-[28px] font-bold text-zinc-900 tracking-tight leading-[1.2] font-[family-name:var(--font-urbanist)]">
+          {/* Title (Left Column) */}
+          <div className="lg:col-span-4 xl:col-span-3.5 pr-2">
+            <h3 className="text-2xl sm:text-3xl md:text-[32px] font-bold text-zinc-900 tracking-tight leading-[1.12] font-[family-name:var(--font-urbanist)]">
               {project.title}
             </h3>
           </div>
 
-          {/* Description */}
-          <div>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-zinc-400 mb-1.5">
-              Description
-            </p>
-            <p className="text-sm text-zinc-700 font-medium leading-relaxed font-[family-name:var(--font-urbanist)]">
-              {project.description}
-            </p>
-          </div>
+          {/* 3 Detail Columns (Description, Deliverables, Industry) */}
+          <div className="lg:col-span-8 xl:col-span-8.5 grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8 items-start">
+            {/* Description */}
+            <div className="flex items-start gap-3.5">
+              <div className="w-10 h-10 rounded-full bg-[#18181c] border border-white/10 flex items-center justify-center text-white shrink-0 shadow-sm mt-0.5">
+                <project.descIcon className="w-4 h-4 text-zinc-300" />
+              </div>
+              <div className="flex flex-col">
+                <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-[#FD3A25] mb-1 font-[family-name:var(--font-urbanist)]">
+                  Description
+                </p>
+                <p className="text-xs sm:text-sm text-zinc-700 font-medium leading-relaxed font-[family-name:var(--font-urbanist)]">
+                  {project.description}
+                </p>
+              </div>
+            </div>
 
-          {/* Deliverables */}
-          <div>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-zinc-400 mb-1.5">
-              Deliverables
-            </p>
-            <p className="text-sm text-zinc-700 font-medium leading-relaxed font-[family-name:var(--font-urbanist)]">
-              {project.deliverables}
-            </p>
-          </div>
+            {/* Deliverables */}
+            <div className="flex items-start gap-3.5">
+              <div className="w-10 h-10 rounded-full bg-[#18181c] border border-white/10 flex items-center justify-center text-white shrink-0 shadow-sm mt-0.5">
+                <project.delivIcon className="w-4 h-4 text-zinc-300" />
+              </div>
+              <div className="flex flex-col">
+                <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-[#FD3A25] mb-1 font-[family-name:var(--font-urbanist)]">
+                  Deliverables
+                </p>
+                <p className="text-xs sm:text-sm text-zinc-700 font-medium leading-relaxed font-[family-name:var(--font-urbanist)]">
+                  {project.deliverables}
+                </p>
+              </div>
+            </div>
 
-          {/* Industry */}
-          <div>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-zinc-400 mb-1.5">
-              Industry
-            </p>
-            <p className="text-sm text-zinc-700 font-medium font-[family-name:var(--font-urbanist)]">
-              {project.industry}
-            </p>
+            {/* Industry */}
+            <div className="flex items-start gap-3.5">
+              <div className="w-10 h-10 rounded-full bg-[#18181c] border border-white/10 flex items-center justify-center text-white shrink-0 shadow-sm mt-0.5">
+                <project.industryIcon className="w-4 h-4 text-zinc-300" />
+              </div>
+              <div className="flex flex-col">
+                <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-[#FD3A25] mb-1 font-[family-name:var(--font-urbanist)]">
+                  Industry
+                </p>
+                <p className="text-xs sm:text-sm text-zinc-700 font-medium leading-relaxed font-[family-name:var(--font-urbanist)]">
+                  {project.industry}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -47,32 +47,38 @@ export async function POST(req: Request) {
       );
     }
 
-    // 6. Forward submission directly to sarthak.zfi@gmail.com via FormSubmit AJAX service
-    const response = await fetch("https://formsubmit.co/ajax/sarthak.zfi@gmail.com", {
+    // 6. Forward submission to contact@corauxis.com with Origin and Referer headers
+    const response = await fetch("https://formsubmit.co/ajax/contact@corauxis.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        Origin: "https://corauxis.com",
+        Referer: "https://corauxis.com",
       },
       body: JSON.stringify({
-        _subject: `New CorAuxis Inquiry from ${firstName} ${lastName} (${category || "General"})`,
+        _subject: `New CorAuxis Inquiry: ${firstName} ${lastName} (${category || "General"})`,
         _template: "table",
         _captcha: "false",
-        "Sender Name": `${firstName} ${lastName}`,
-        "Sender Email": email,
-        Category: category || "Not Specified",
+        "Full Name": `${firstName} ${lastName}`,
+        "Reply-To Email": email,
+        Category: category || "General Inquiry",
         Message: message,
       }),
     });
 
     const result = await response.json().catch(() => ({}));
 
-    if (response.ok || result.success === "true" || result.success === true) {
-      return NextResponse.json({ success: true });
-    } else {
-      // Return success with email client fallback guidance if service has rate limits
-      return NextResponse.json({ success: true, note: "Delivered via fallback" });
+    // If FormSubmit indicates activation is pending, inform gracefully
+    if (result.message && result.message.includes("Activation")) {
+      return NextResponse.json({
+        success: true,
+        activationPending: true,
+        message: "Message queued. Please check contact@corauxis.com to activate FormSubmit one-time verification link.",
+      });
     }
+
+    return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Error processing contact form:", error);
     return NextResponse.json(

@@ -1,0 +1,17 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer glowing vector connections -->
+  <path d="M30 50 L65 28" stroke="#F43F5E" stroke-width="7" stroke-linecap="round"/>
+  <path d="M30 50 L65 72" stroke="#F43F5E" stroke-width="7" stroke-linecap="round"/>
+  
+  <!-- Left Central Node -->
+  <circle cx="30" cy="50" r="14" fill="#E11D48"/>
+  <circle cx="30" cy="50" r="7" fill="#FFE4E6"/>
+  
+  <!-- Top Right Node -->
+  <circle cx="68" cy="26" r="12" fill="#FB7185"/>
+  <circle cx="68" cy="26" r="5.5" fill="#FFFFFF"/>
+  
+  <!-- Bottom Right Node -->
+  <circle cx="68" cy="74" r="12" fill="#FB7185"/>
+  <circle cx="68" cy="74" r="5.5" fill="#FFFFFF"/>
+</svg>

@@ -14,52 +14,57 @@ interface ServiceItem {
 
 const servicesData: ServiceItem[] = [
   {
-    id: "strategy",
+    id: "ai-tech-services",
     num: "(01)",
-    title: "AI Strategy & Mapping",
-    description: "Identify high-ROI use cases and define a realistic, measurable AI roadmap.",
+    title: "AI Based Tech Services",
+    description: "Intelligent systems and AI integrations that automate repetitive tasks, simplify business processes, and leverage actionable data insights to accelerate growth at lower costs.",
     tags: [
-      "Stakeholder discovery",
-      "Value model & KPI definition",
-      "Data readiness assessment",
+      "AI Automation",
+      "AI Integration & Development",
+      "Process Simplification",
+      "Data-Driven Growth Insights",
+      "Virtual Assistance",
     ],
     image: "/images/services/strategy.png",
   },
   {
-    id: "ux",
+    id: "software-development",
     num: "(02)",
-    title: "AI UX & Product Design",
-    description: "Human-centered flows, prompts, and interfaces that build trust and adoption.",
+    title: "Software & Technology Services",
+    description: "Custom software, mobile apps, modern web platforms, and deep API integrations engineered to streamline repetitive workflows and keep your business running on autopilot.",
     tags: [
-      "Prototype flows",
-      "Prompt UX patterns",
-      "Usability testing with real users",
+      "Custom Software & App Development",
+      "Website & Platform Development",
+      "Custom API Integration",
+      "Scalable Solutions",
     ],
-    image: "/images/services/ux.jpg",
+    image: "/images/services/service_ux.png",
   },
   {
-    id: "agent",
+    id: "creative-growth-marketing",
     num: "(03)",
-    title: "LLM / Agent Development",
-    description: "Domain-specific copilots and agents that plan, execute, and report.",
+    title: "Creative & Growth Marketing Services",
+    description: "AI-assisted performance marketing, conversion rate optimization (CRO), graphic design, and product reels production across Meta & Google to drive measurable conversions.",
     tags: [
-      "Multi-step planning",
-      "Function calling & toolchains",
-      "Guardrails and audit trails",
+      "Performance Marketing (Meta & Google)",
+      "Graphic Design & Brand Creatives",
+      "Product & Reels Shoot Production",
+      "CRO (Conversion Rate Optimisation)",
     ],
-    image: "/images/services/agent.jpg",
+    image: "/images/services/service_agent.png",
   },
   {
-    id: "data",
+    id: "team-extension",
     num: "(04)",
-    title: "Data Engineering & Pipelines",
-    description: "Reliable data flows from ingestion to features, built for scale and cost control.",
+    title: "Flexible Team Extension Services",
+    description: "Extend your internal team on demand with reliable tech, software engineering, and growth marketing specialists tailored to your business needs for rapid execution.",
     tags: [
-      "Data cleaning & chunking",
-      "Hybrid search",
-      "Freshness, citations, and re-ranking",
+      "Dedicated Tech & Marketing Experts",
+      "Full-Stack Team Extension",
+      "On-Demand Resource Scaling",
+      "1:1 Dedicated Business Support",
     ],
-    image: "/images/services/data.jpg",
+    image: "/images/services/service_data.png",
   },
 ];
 
@@ -112,12 +117,12 @@ export default function ServicesSection() {
 
               {/* Headline */}
               <h2 className="text-4xl sm:text-5xl md:text-[56px] font-bold tracking-tight text-zinc-900 leading-[1.06] font-[family-name:var(--font-urbanist)]">
-                End-to-End<br className="hidden sm:inline" /> AI Services
+                End-to-End<br className="hidden sm:inline" /> AI & Tech Services
               </h2>
 
               {/* Subdescription */}
               <p className="mt-7 text-base sm:text-lg text-zinc-600 font-medium leading-relaxed max-w-md font-[family-name:var(--font-urbanist)]">
-                We turn ambiguous AI ideas into production features your users trust—combining strategy, design, engineering, and rigorous evaluation.
+                We build intelligent automation, custom software, autonomous AI agents, and performance growth solutions engineered to streamline operations and drive measurable ROI.
               </p>
             </div>
 
@@ -161,7 +166,7 @@ export default function ServicesSection() {
                 <div
                   key={item.id}
                   onClick={() => setActiveIdx(idx)}
-                  className={`transition-colors duration-300 cursor-pointer select-none rounded-[32px] will-change-transform ${
+                  className={`transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer select-none rounded-[32px] will-change-transform ${
                     isActive
                       ? "bg-[#0c0c0e] text-white p-8 sm:p-10 md:p-12 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.4)] border border-zinc-800/80"
                       : "bg-[#f0f0f3] text-zinc-900 p-7 sm:p-8 md:p-9 border border-white border-b-zinc-300/80 shadow-[inset_0_-6px_0_0_rgba(0,0,0,0.06),0_16px_36px_rgba(0,0,0,0.11),0_4px_12px_rgba(0,0,0,0.06)] hover:bg-[#eaeae0]/70"
@@ -173,7 +178,7 @@ export default function ServicesSection() {
                   {/* Header Row */}
                   <div className="flex items-center justify-between gap-4">
                     <h3
-                      className={`font-bold tracking-tight font-[family-name:var(--font-urbanist)] transition-colors duration-300 ${
+                      className={`font-bold tracking-tight font-[family-name:var(--font-urbanist)] transition-colors duration-400 ${
                         isActive
                           ? "text-2xl sm:text-3xl md:text-[36px] text-white leading-snug"
                           : "text-xl sm:text-2xl md:text-[28px] text-zinc-900"
@@ -186,15 +191,21 @@ export default function ServicesSection() {
                     </span>
                   </div>
 
-                  {/* Expanded Body Content */}
-                  {isActive && (
-                    <div className="mt-4 pt-1 animate-fadeIn">
+                  {/* Smooth Collapsible Accordion Body */}
+                  <div
+                    className={`grid transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                      isActive
+                        ? "grid-rows-[1fr] opacity-100 mt-4 pt-1"
+                        : "grid-rows-[0fr] opacity-0 mt-0 pt-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
                       <p className="text-sm sm:text-base text-zinc-400 font-normal leading-relaxed max-w-xl font-[family-name:var(--font-urbanist)]">
                         {item.description}
                       </p>
 
                       {/* Tag Chips */}
-                      <div className="flex flex-wrap gap-2.5 sm:gap-3 mt-7 sm:mt-9">
+                      <div className="flex flex-wrap gap-2.5 sm:gap-3 mt-6 sm:mt-8 pb-1">
                         {item.tags.map((tag) => (
                           <span
                             key={tag}
@@ -205,7 +216,7 @@ export default function ServicesSection() {
                         ))}
                       </div>
                     </div>
-                  )}
+                  </div>
                 </div>
               );
             })}

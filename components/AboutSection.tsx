@@ -1,14 +1,13 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { Star } from "lucide-react";
 import Image from "next/image";
 
 export default function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [translateY, setTranslateY] = useState(0);
   const [isInView, setIsInView] = useState(false);
-  const [count, setCount] = useState(0);
+  const [count40, setCount40] = useState(0);
 
   // 1. Intersection Observer for viewport trigger (resets when out of view, re-animates on return)
   useEffect(() => {
@@ -26,17 +25,17 @@ export default function AboutSection() {
     return () => observer.disconnect();
   }, []);
 
-  // 2. Count-up animation for "20+" watermark stat
+  // 2. Count-up animation for "40%" stat
   useEffect(() => {
     if (!isInView) {
-      setCount(0);
+      setCount40(0);
       return;
     }
 
     let startTimestamp: number | null = null;
     let animationFrame: number;
     const duration = 1600; // 1.6s smooth count-up
-    const target = 20;
+    const target = 40;
 
     const step = (timestamp: number) => {
       if (!startTimestamp) startTimestamp = timestamp;
@@ -44,7 +43,7 @@ export default function AboutSection() {
       // Cubic ease-out for natural slowing effect
       const easedProgress = 1 - Math.pow(1 - progress, 3);
       const currentCount = Math.floor(easedProgress * target);
-      setCount(currentCount);
+      setCount40(currentCount);
 
       if (progress < 1) {
         animationFrame = requestAnimationFrame(step);
@@ -97,7 +96,7 @@ export default function AboutSection() {
             About Us
           </div>
           <h2 className="text-3xl sm:text-5xl md:text-[54px] font-bold tracking-tight text-zinc-900 max-w-4xl leading-[1.12] font-[family-name:var(--font-urbanist)]">
-            Engineering Intelligent Software for Modern Businesses
+            Engineering Intelligent Automation and Software for Modern Businesses
           </h2>
         </div>
 
@@ -114,7 +113,7 @@ export default function AboutSection() {
 
               {/* Exact typography matching Image 3: 32px Urbanist font & #FD3A25 red accent */}
               <h3 className="text-[32px] sm:text-[36px] font-bold tracking-tight text-white leading-snug font-[family-name:var(--font-urbanist)]">
-                Based in <span className="text-[#FD3A25]">Montréal, Canada</span>
+                Based in <span className="text-[#FD3A25]">Pune, India</span>
               </h3>
 
               {/* Capsule CTA Button - Exact 3D Popping Out Effect matching screenshot */}
@@ -153,61 +152,45 @@ export default function AboutSection() {
             </div>
           </div>
 
-          {/* Right Cards Stack (5 cols - Narrower Width) */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
-            {/* Top Light Card - Exact 2D/3D Beveled Bottom Edge & Drop Shadow */}
-            <div className="relative rounded-[32px] bg-[#f0f0f3] border border-white border-b-zinc-300/80 p-8 sm:p-10 md:p-11 flex flex-col justify-between overflow-hidden shadow-[inset_0_-6px_0_0_rgba(0,0,0,0.06),0_16px_36px_rgba(0,0,0,0.11),0_4px_12px_rgba(0,0,0,0.06)] min-h-[290px]">
-              {/* Giant Background Watermark Animated Counter */}
-              <span className="absolute right-6 sm:right-8 bottom-2 sm:bottom-3 md:bottom-4 text-[120px] sm:text-[145px] md:text-[160px] font-black text-[#d8d8de]/75 select-none pointer-events-none font-[family-name:var(--font-urbanist)] leading-none tracking-tighter transition-all duration-300">
-                {count}+
-              </span>
-
-              <p className="relative z-10 text-base sm:text-xl text-zinc-800 font-medium leading-relaxed max-w-xl font-[family-name:var(--font-urbanist)]">
-                CorAuxis is an AI Automation and Software Development company helping businesses streamline operations, eliminate repetitive work, and accelerate growth through intelligent technology.
+          {/* Right Cards Stack (5 cols - 3 Detail Cards) */}
+          <div className="lg:col-span-5 flex flex-col gap-5 sm:gap-6 justify-between">
+            {/* Box 1: Tech + Marketing + Ops */}
+            <div className="rounded-[28px] sm:rounded-[32px] bg-[#f0f0f3] border border-white border-b-zinc-300/80 p-6 sm:p-7 md:p-8 flex flex-col justify-center shadow-[inset_0_-4px_0_0_rgba(0,0,0,0.05),0_12px_28px_rgba(0,0,0,0.08),0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-300 hover:shadow-lg">
+              <h4 className="text-2xl sm:text-[28px] md:text-[30px] font-bold tracking-tight text-zinc-900 font-[family-name:var(--font-urbanist)] leading-tight">
+                Tech + Marketing + Ops
+              </h4>
+              <p className="text-sm sm:text-base font-semibold text-zinc-800 mt-1 mb-2 font-[family-name:var(--font-urbanist)]">
+                One integrated team extension
               </p>
-
-              {/* Trustpilot Widget (Vertical Stacked Layout matching user screenshot) */}
-              <div className="relative z-10 mt-10 sm:mt-12 flex flex-col gap-2">
-                <div className="flex items-center gap-2">
-                  <Star className="w-5 h-5 fill-[#00b67a] text-[#00b67a]" />
-                  <span className="text-sm font-bold text-zinc-900 tracking-tight font-[family-name:var(--font-urbanist)]">
-                    Trustpilot
-                  </span>
-                </div>
-                {/* 5 Rating Box Stars */}
-                <div className="flex items-center gap-[3px]">
-                  {[...Array(5)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="w-5 h-5 bg-[#373943] flex items-center justify-center rounded-[2px]"
-                    >
-                      <Star className="w-3 h-3 fill-white text-white" />
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <p className="text-xs sm:text-sm text-zinc-600 font-normal leading-relaxed font-[family-name:var(--font-urbanist)]">
+                Get development, performance marketing, creative execution, CRO, and operational support from one flexible team
+              </p>
             </div>
 
-            {/* Bottom Quote Card - Exact 2D/3D Beveled Bottom Edge & Drop Shadow */}
-            <div className="rounded-[32px] bg-[#f0f0f3] border border-white border-b-zinc-300/80 p-8 sm:p-10 md:p-11 flex flex-col justify-between shadow-[inset_0_-6px_0_0_rgba(0,0,0,0.06),0_16px_36px_rgba(0,0,0,0.11),0_4px_12px_rgba(0,0,0,0.06)] min-h-[200px]">
-              <div>
-                <span className="text-4xl text-zinc-400 font-serif leading-none block mb-2 select-none">
-                  &ldquo;
-                </span>
-                <blockquote className="text-lg sm:text-xl font-semibold text-zinc-900 tracking-tight leading-snug font-[family-name:var(--font-urbanist)]">
-                  AI Isn&apos;t about replacement it&apos;s about smarter management,
-                </blockquote>
+            {/* Box 2: 40% Faster Execution Potential */}
+            <div className="rounded-[28px] sm:rounded-[32px] bg-[#f0f0f3] border border-white border-b-zinc-300/80 p-6 sm:p-7 md:p-8 flex flex-col justify-center shadow-[inset_0_-4px_0_0_rgba(0,0,0,0.05),0_12px_28px_rgba(0,0,0,0.08),0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-300 hover:shadow-lg">
+              <div className="text-4xl sm:text-5xl md:text-[52px] font-bold tracking-tight text-zinc-900 font-[family-name:var(--font-urbanist)] leading-none mb-1">
+                {count40}%
               </div>
+              <p className="text-sm sm:text-base font-semibold text-zinc-800 mt-1 mb-2 font-[family-name:var(--font-urbanist)]">
+                Faster Execution Potential
+              </p>
+              <p className="text-xs sm:text-sm text-zinc-600 font-normal leading-relaxed font-[family-name:var(--font-urbanist)]">
+                AI-assisted workflows can help reduce manual effort in planning, content, development, reporting, and repetitive execution tasks.
+              </p>
+            </div>
 
-              {/* Stat Footer */}
-              <div className="mt-6 pt-6 border-t border-zinc-300/80 flex items-center gap-3 font-[family-name:var(--font-urbanist)]">
-                <span className="text-sm font-bold text-zinc-900 font-mono">
-                  100%
-                </span>
-                <span className="text-xs text-zinc-500 font-medium">
-                  Custom Build
-                </span>
+            {/* Box 3: 1:1 Dedicated Business Support */}
+            <div className="rounded-[28px] sm:rounded-[32px] bg-[#f0f0f3] border border-white border-b-zinc-300/80 p-6 sm:p-7 md:p-8 flex flex-col justify-center shadow-[inset_0_-4px_0_0_rgba(0,0,0,0.05),0_12px_28px_rgba(0,0,0,0.08),0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-300 hover:shadow-lg">
+              <div className="text-4xl sm:text-5xl md:text-[52px] font-bold tracking-tight text-zinc-900 font-[family-name:var(--font-urbanist)] leading-none mb-1">
+                1:1
               </div>
+              <p className="text-sm sm:text-base font-semibold text-zinc-800 mt-1 mb-2 font-[family-name:var(--font-urbanist)]">
+                Dedicated Business Support
+              </p>
+              <p className="text-xs sm:text-sm text-zinc-600 font-normal leading-relaxed font-[family-name:var(--font-urbanist)]">
+                We work closely with each client to understand their process, identify gaps, and provide the right mix of tech, marketing, and operational support.
+              </p>
             </div>
           </div>
         </div>

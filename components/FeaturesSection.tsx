@@ -237,21 +237,18 @@ export default function FeaturesSection() {
             <div className="hidden lg:block absolute left-[20%] top-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-[#FD3A25] shadow-[0_0_8px_rgba(253,58,37,0.8)] z-10 pointer-events-none" />
             <div className="hidden lg:block absolute left-[80%] top-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-[#FD3A25] shadow-[0_0_8px_rgba(253,58,37,0.8)] z-10 pointer-events-none" />
 
-            {/* Center Glowing Red Hub Card with AgenAI Branding */}
-            <div className="relative z-10 w-44 sm:w-48 h-32 sm:h-36 rounded-[28px] bg-[#FD3A25] text-white flex flex-col items-center justify-center shadow-[0_16px_40px_rgba(253,58,37,0.45)] border border-red-400/30 select-none">
-              {/* AgenAI Overlapping Circles Logo */}
-              <div className="relative w-12 h-8 mb-2">
+            {/* Center Glowing Red Hub Card with CorAuxis Logo */}
+            <div className="relative z-10 w-44 sm:w-48 h-28 sm:h-32 rounded-[28px] bg-[#FD3A25] text-white flex items-center justify-center shadow-[0_16px_40px_rgba(253,58,37,0.45)] border border-red-400/30 select-none px-6">
+              {/* CorAuxis Logo */}
+              <div className="relative w-32 sm:w-36 h-12 sm:h-14">
                 <Image
-                  src="/images/features/agenai-logo.png"
-                  alt="AgenAI Logo"
+                  src="/images/logo.png"
+                  alt="CorAuxis Logo"
                   fill
-                  className="object-contain"
-                  sizes="48px"
+                  className="object-contain brightness-0 invert"
+                  sizes="144px"
                 />
               </div>
-              <span className="font-bold text-lg sm:text-xl text-white tracking-tight font-[family-name:var(--font-urbanist)]">
-                AgenAI
-              </span>
             </div>
           </div>
 
