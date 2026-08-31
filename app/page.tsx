@@ -14,7 +14,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <main className="relative flex flex-col w-full min-h-screen bg-black overflow-x-clip">
+    <main className="relative flex flex-col w-full min-h-screen bg-[#f2f2f4] overflow-x-clip">
       {isLoading && (
         <LoadingScreen onComplete={() => setIsLoading(false)} />
       )}

@@ -9,8 +9,8 @@
 }
 
 :root {
-  --background: #000000;
-  --foreground: #ffffff;
+  --background: #f2f2f4;
+  --foreground: #111113;
 }
 
 @theme inline {
@@ -20,43 +20,18 @@
   --font-mono: var(--font-geist-mono);
 }
 
-html.lenis, html.lenis-smooth {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
-}
-
-html {
-  overflow-x: clip;
-  overflow-y: auto;
-}
-
 body {
-  background: var(--background);
+  background-color: #f2f2f4;
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
-  overflow-x: clip;
-  overflow-y: visible;
+  overflow-x: hidden;
 }
 
 @keyframes spinSlow {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -71,9 +46,11 @@ body {
   0% {
     stroke-dashoffset: 480px;
   }
+
   58.9% {
     stroke-dashoffset: -650px;
   }
+
   100% {
     stroke-dashoffset: -650px;
   }
@@ -83,9 +60,11 @@ body {
   0% {
     stroke-dashoffset: 480px;
   }
+
   75.1% {
     stroke-dashoffset: -961px;
   }
+
   100% {
     stroke-dashoffset: -961px;
   }
@@ -108,13 +87,14 @@ body {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 .sc-revealed {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Dot indicators — fade + slight slide, slower */
@@ -122,13 +102,14 @@ body {
   opacity: 0;
   transform: translateY(14px);
   transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 .sc-dots-revealed {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Metadata text grid — delayed after dots, even slower */
@@ -136,42 +117,46 @@ body {
   opacity: 0;
   transform: translateY(22px);
   transition: opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.35s,
-              transform 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.35s;
+    transform 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.35s;
 }
+
 .sc-meta-revealed {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.35s,
-              transform 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.35s;
+    transform 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.35s;
 }
 
 /* ---- Lenis Smooth Scroll Core Rules ---- */
-html.lenis, html.lenis body {
+html.lenis,
+html.lenis body {
   height: auto;
 }
+
 .lenis.lenis-smooth {
   scroll-behavior: auto !important;
 }
+
 .lenis.lenis-smooth [data-lenis-prevent] {
   overscroll-behavior: contain;
 }
+
 .lenis.lenis-stopped {
   overflow: hidden;
 }
+
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
 
 /* ---- Gloss glow sweep on project card image hover (Slower & Smoother) ---- */
 .sc-gloss {
-  background: linear-gradient(
-    108deg,
-    transparent 15%,
-    rgba(255, 255, 255, 0.03) 35%,
-    rgba(255, 255, 255, 0.24) 50%,
-    rgba(255, 255, 255, 0.03) 65%,
-    transparent 85%
-  );
+  background: linear-gradient(108deg,
+      transparent 15%,
+      rgba(255, 255, 255, 0.03) 35%,
+      rgba(255, 255, 255, 0.24) 50%,
+      rgba(255, 255, 255, 0.03) 65%,
+      transparent 85%);
   background-size: 320% 100%;
   background-position: 190% center;
   transition: background-position 1.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -184,9 +169,12 @@ html.lenis, html.lenis body {
 
 /* ---- Synchronized Floating animation for Tools Section Orbit Cards (All 6 move together) ---- */
 @keyframes floatAllToolsSync {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(14px);
   }
@@ -199,27 +187,36 @@ html.lenis, html.lenis body {
 
 /* ---- Floating animations for Tools Section Orbit Cards ---- */
 @keyframes floatTool1 {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-8px);
   }
 }
 
 @keyframes floatTool2 {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(8px);
   }
 }
 
 @keyframes floatTool3 {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-6px);
   }

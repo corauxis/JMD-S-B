@@ -44,7 +44,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className="min-h-full flex flex-col bg-black text-white selection:bg-indigo-500 selection:text-white"
+        className="min-h-full flex flex-col bg-[#f2f2f4] text-white selection:bg-[#FD3A25] selection:text-white"
         suppressHydrationWarning
       >
         <SmoothScroll>{children}</SmoothScroll>

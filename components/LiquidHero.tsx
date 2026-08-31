@@ -153,15 +153,40 @@ export default function LiquidHero({
   withinText = "within 24 hours.",
   title = "CORAUXIS",
 }: LiquidHeroProps) {
+  const sectionRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [scrollY, setScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Auto-pause 4K video when outside hero section to optimize CPU/GPU & mobile performance
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!videoRef.current) return;
+        if (entry.isIntersecting) {
+          videoRef.current.play().catch(() => {});
+        } else {
+          videoRef.current.pause();
+        }
+      },
+      { threshold: 0.02 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     let ticking = false;
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          setScrollY(window.scrollY);
+          if (window.scrollY < window.innerHeight * 1.2) {
+            setScrollY(window.scrollY);
+          }
           ticking = false;
         });
         ticking = true;
@@ -180,12 +205,13 @@ export default function LiquidHero({
   ];
 
   return (
-    <section className="liquid-hero">
+    <section ref={sectionRef} className="liquid-hero">
       {/* 
-        Hero Background Video (loops seamlessly, muted, autoplay, playsInline)
+        Hero Background Video (loops seamlessly, auto-pauses offscreen, muted, autoplay, playsInline)
       */}
       <div className="liquid-hero__bg-container">
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
@@ -273,7 +299,7 @@ export default function LiquidHero({
         <div className="liquid-hero__subtext-block">
           <p className="liquid-hero__eyebrow">{eyebrow}</p>
           <div className="liquid-hero__within">{withinText}</div>
-          <a href="#contact" className="liquid-hero__explore">
+          <a href="#about" className="liquid-hero__explore">
             <span>Explore Now</span>
             <span className="liquid-hero__explore-arrow">┐</span>
           </a>
@@ -282,7 +308,7 @@ export default function LiquidHero({
 
       {/* Bottom Row: Left Info (Tag + Meter) & Shifted Right 3D CORAUXIS Model */}
       <div className="liquid-hero__bottom-row">
-        
+
         {/* Bottom Left Info Stack */}
         <div className="liquid-hero__left-meta">
           <div className="liquid-hero__tag-block">
@@ -290,7 +316,7 @@ export default function LiquidHero({
             <div className="liquid-hero__tag-title">AUTOMATE</div>
             <div className="liquid-hero__tag-sub">Branding</div>
           </div>
-          
+
           <div className="liquid-hero__meter">
             <span>© 2026</span>
             <div className="liquid-hero__ticks">
@@ -308,16 +334,9 @@ export default function LiquidHero({
           </div>
         </div>
 
-        {/* 3D Moving Model (Commented out per user request) */}
-        {/*
-        <div className="liquid-hero__title-container pointer-events-auto">
-          <Logo3DCanvas className="w-full max-w-[1050px] h-[150px] sm:h-[190px] md:h-[240px] lg:h-[300px] xl:h-[340px]" />
-        </div>
-        */}
-
-        {/* Static Title Text */}
-        <div className="liquid-hero__title-container pointer-events-none">
-          <h1 className="liquid-hero__title">{title}</h1>
+        {/* Shifted Right 3D Interactive CORAUXIS Model */}
+        <div className="liquid-hero__title-container">
+          <Logo3DCanvas className="w-full max-w-[850px] h-[130px] sm:h-[170px] md:h-[220px] lg:h-[260px] xl:h-[280px]" />
         </div>
 
       </div>

@@ -86,30 +86,22 @@ export default function Logo3DCanvas({
       const visibleHeight = 2 * Math.tan(vFov / 2) * camera.position.z;
       const visibleWidth = visibleHeight * aspect;
 
-      // 78% of width and 72% of height gives ample margin for 3D rotation without clipping
-      const scaleX = (visibleWidth * 0.78) / rawModelSize.x;
-      const scaleY = (visibleHeight * 0.72) / rawModelSize.y;
+      // When static, fill the available container area with nice padding
+      const scaleX = (visibleWidth * 0.95) / rawModelSize.x;
+      const scaleY = (visibleHeight * 0.92) / rawModelSize.y;
       const targetScale = Math.min(scaleX, scaleY);
 
       modelGroup.scale.set(targetScale, targetScale, targetScale);
     };
 
-    // Mouse tracking variables
-    let mouseX = 0;
-    let mouseY = 0;
-    let targetRotX = 0;
-    let targetRotY = 0;
-
+    // Mouse tracking variables (only active if interactive is true)
     const handleMouseMove = (e: MouseEvent) => {
       if (!interactive) return;
-      const rect = container.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-      const y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
-      mouseX = x;
-      mouseY = y;
     };
 
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    if (interactive) {
+      window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    }
 
     // 6. Load GLB Model
     const loader = new GLTFLoader();

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Logo3DCanvas from "@/components/Logo3DCanvas";
 
 const categoryOptions = [
   "AI Strategy & Mapping",
@@ -70,16 +71,16 @@ export default function Footer() {
         const rect = footerRef.current.getBoundingClientRect();
         const windowHeight = typeof window !== "undefined" ? window.innerHeight : 900;
 
-        // Starts smoothly slightly earlier as you approach the bottom of Tools
-        const startPoint = windowHeight * 1.05;
-        // Smooth natural expansion range
-        const distanceToFull = windowHeight * 1.05;
+        // Starts smoothly as you approach the bottom of Tools
+        const startPoint = windowHeight * 0.95;
+        // Increased scroll distance to slow down the expansion rate by a little
+        const distanceToFull = windowHeight * 1.35;
 
         const current = startPoint - rect.top;
         const targetProgress = Math.min(Math.max(current / distanceToFull, 0), 1);
 
         // Silky smooth inertia interpolation synced with Lenis
-        currentProgress += (targetProgress - currentProgress) * 0.12;
+        currentProgress += (targetProgress - currentProgress) * 0.09;
         if (Math.abs(targetProgress - currentProgress) < 0.001) {
           currentProgress = targetProgress;
         }
@@ -158,22 +159,24 @@ export default function Footer() {
     <footer
       ref={footerRef}
       id="contact"
-      className="relative z-30 bg-white text-white pt-10 sm:pt-20 md:pt-28 pb-10 sm:pb-16 md:pb-24 px-3 sm:px-8 md:px-12 lg:px-16 overflow-x-clip overflow-y-visible select-none"
+      className="relative z-30 bg-[#f2f2f4] text-white pt-10 sm:pt-20 md:pt-28 pb-10 sm:pb-16 md:pb-24 px-3 sm:px-8 md:px-12 lg:px-16 overflow-x-clip select-none"
     >
       {/* ========================================================
-          EXPANDING BOOMING CIRCLE (Overflows on Top of Upper Fold, Clipped at Bottom)
+          EXPANDING BOOMING CIRCLE (Emerges from bottom-up, extends 1400px up, strictly clipped at footer bottom with 0px overflow)
          ======================================================== */}
       <div
-        className="hidden sm:flex absolute inset-0 items-center justify-center pointer-events-none z-20 overflow-visible"
+        className="hidden sm:block absolute inset-x-0 pointer-events-none z-20 overflow-hidden"
         style={{
-          clipPath: "inset(-1400px -1400px 0px -1400px)",
+          top: "-1400px",
+          height: "calc(100% + 1400px)",
         }}
       >
         <div
-          className="relative w-[1400px] sm:w-[1800px] md:w-[2200px] lg:w-[2700px] aspect-square rounded-full pointer-events-none"
+          className="absolute left-1/2 w-[1400px] sm:w-[1800px] md:w-[2200px] lg:w-[2700px] aspect-square rounded-full pointer-events-none shrink-0"
           style={{
-            transform: `translate3d(0, ${(1 - circleProgress) * 320 - 80}px, 0) scale(${0.70 + circleProgress * 1.50})`,
-            opacity: circleProgress <= 0.01 ? 0 : Math.min(circleProgress * 2.5, 1),
+            top: "calc(1400px + 50%)",
+            transform: `translate(-50%, -50%) translate3d(0, ${(1 - circleProgress) * 280 - 60}px, 0) scale(${0.72 + circleProgress * 1.25})`,
+            opacity: circleProgress <= 0.01 ? 0 : Math.min(circleProgress * 2.2, 1),
             transformOrigin: "center center",
             transition: "transform 0.1s linear, opacity 0.15s ease-out",
             willChange: "transform, opacity",
@@ -181,7 +184,7 @@ export default function Footer() {
         >
           {/* Radiant Red/Coral Booming Horizon Dome */}
           <div className="w-full h-full rounded-full bg-gradient-to-t from-[#FD3A25] via-[#ff4a34] to-[#FD3A25] opacity-98 shadow-[0_-40px_160px_rgba(253,58,37,0.6),0_-15px_70px_rgba(255,255,255,0.2)]" />
-          
+
           {/* Soft Radial Ambient Lighting Aura */}
           <div className="absolute -top-[12%] left-1/2 -translate-x-1/2 w-[95%] h-[50%] bg-[#ff7a6b]/45 rounded-full blur-[90px] sm:blur-[140px]" />
         </div>
@@ -195,20 +198,20 @@ export default function Footer() {
         style={
           !isMobile
             ? {
-                transform: `translate3d(0, ${(1 - circleProgress) * 75}px, 0) scale(${0.84 + circleProgress * 0.16})`,
-                transformOrigin: "center top",
-                transition: "transform 0.08s linear",
-                willChange: "transform",
-              }
+              transform: `translate3d(0, ${(1 - circleProgress) * 75}px, 0) scale(${0.84 + circleProgress * 0.16})`,
+              transformOrigin: "center top",
+              transition: "transform 0.08s linear",
+              willChange: "transform",
+            }
             : undefined
         }
       >
-        
+
         {/* ========================================================
             TOP SECTION: Contact Form Block (2 Columns)
            ======================================================== */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-stretch">
-          
+
           {/* Left Column: Dark box with Minimalist Stepped Icon */}
           <div className="lg:col-span-5 hidden sm:flex items-center justify-center rounded-[28px] bg-[#141418] border border-white/5 min-h-[380px] lg:min-h-[500px] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
             <div className="relative w-16 h-16 flex items-center justify-center">
@@ -228,7 +231,7 @@ export default function Footer() {
               <h2 className="text-4xl sm:text-5xl md:text-[64px] font-bold text-white tracking-tight leading-[1.08] font-[family-name:var(--font-urbanist)]">
                 Get In Touch”
               </h2>
-              
+
               {/* Subheading */}
               <p className="mt-3 text-sm sm:text-base text-zinc-400 font-medium leading-relaxed font-[family-name:var(--font-urbanist)]">
                 Let&apos;s build something great together! Audit and entire structure in next 24hrs.
@@ -237,7 +240,7 @@ export default function Footer() {
 
             {/* Form Fields */}
             <form onSubmit={handleSubmit} className="mt-10 sm:mt-12 flex flex-col gap-8">
-              
+
               {/* Anti-Spam Honeypot Field (Hidden from humans) */}
               <div className="hidden" aria-hidden="true">
                 <label htmlFor="company_hp">Do not fill this field</label>
@@ -293,13 +296,13 @@ export default function Footer() {
 
               {/* Row 2: Premium Custom Dropdown & Email */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 sm:gap-10">
-                
+
                 {/* Custom Glassmorphism Dropdown */}
                 <div ref={dropdownRef} className="flex flex-col relative">
                   <label className="text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-2 font-[family-name:var(--font-urbanist)]">
                     Category
                   </label>
-                  
+
                   {/* Dropdown Trigger Button */}
                   <button
                     type="button"
@@ -310,9 +313,8 @@ export default function Footer() {
                       {formData.category || "Select a category..."}
                     </span>
                     <span
-                      className={`text-xs text-zinc-400 transition-transform duration-300 ${
-                        isDropdownOpen ? "rotate-180 text-[#FD3A25]" : "group-hover:text-white"
-                      }`}
+                      className={`text-xs text-zinc-400 transition-transform duration-300 ${isDropdownOpen ? "rotate-180 text-[#FD3A25]" : "group-hover:text-white"
+                        }`}
                     >
                       ▼
                     </span>
@@ -331,11 +333,10 @@ export default function Footer() {
                               setFormData({ ...formData, category: opt });
                               setIsDropdownOpen(false);
                             }}
-                            className={`w-full px-4 py-2.5 text-left text-xs sm:text-sm font-medium font-[family-name:var(--font-urbanist)] transition-all flex items-center justify-between ${
-                              isSelected
+                            className={`w-full px-4 py-2.5 text-left text-xs sm:text-sm font-medium font-[family-name:var(--font-urbanist)] transition-all flex items-center justify-between ${isSelected
                                 ? "bg-[#FD3A25]/15 text-[#FD3A25] font-semibold"
                                 : "text-zinc-300 hover:bg-white/10 hover:text-white"
-                            }`}
+                              }`}
                           >
                             <span>{opt}</span>
                             {isSelected && (
@@ -395,11 +396,10 @@ export default function Footer() {
               {/* Status Message Notification */}
               {statusMsg.text && (
                 <div
-                  className={`p-3.5 rounded-xl text-xs sm:text-sm font-medium font-[family-name:var(--font-urbanist)] transition-all ${
-                    statusMsg.type === "success"
+                  className={`p-3.5 rounded-xl text-xs sm:text-sm font-medium font-[family-name:var(--font-urbanist)] transition-all ${statusMsg.type === "success"
                       ? "bg-emerald-950/80 text-emerald-300 border border-emerald-500/30"
                       : "bg-red-950/80 text-red-300 border border-red-500/30"
-                  }`}
+                    }`}
                 >
                   {statusMsg.text}
                 </div>
@@ -436,7 +436,7 @@ export default function Footer() {
             MIDDLE SECTION: Contact Details & Navigation Columns
            ======================================================== */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-14 items-start justify-between">
-          
+
           {/* Left Column (6 cols): Direct Contact Information & CTA */}
           <div className="lg:col-span-6 flex flex-col gap-7">
             <div>
@@ -580,19 +580,19 @@ export default function Footer() {
             BOTTOM: Giant CORAUXIS Brand Logo & Inline Copyright Meter
            ======================================================== */}
         <div className="relative w-full flex flex-col sm:flex-row sm:items-end justify-between gap-6 pt-2 sm:pt-4">
-          {/* Giant Brand Logo */}
-          <div className="shrink min-w-0 max-w-[85vw] sm:max-w-[70vw]">
-            <img
-              src="/images/logo.png"
-              alt="CORAUXIS Logo"
-              className="h-14 sm:h-20 md:h-24 lg:h-32 w-auto object-contain select-none"
+          {/* Giant Brand Still 3D Logo */}
+          <div className="shrink min-w-0 max-w-[85vw] sm:max-w-[70vw] flex items-center justify-start">
+            <Logo3DCanvas
+              autoRotate={false}
+              interactive={false}
+              className="w-[280px] xs:w-[320px] sm:w-[460px] md:w-[580px] lg:w-[720px] h-[55px] xs:h-[65px] sm:h-[85px] md:h-[105px] lg:h-[125px]"
             />
           </div>
 
           {/* Bottom Right Copyright & Precision Meter */}
           <div className="flex items-end gap-3 shrink-0 sm:pb-2.5 md:pb-3.5 text-white/90 text-xs sm:text-sm font-mono select-none">
             <span className="tracking-wide">© 2026</span>
-            
+
             {/* Precision Tick Marks (Expanded length & distinct tall tick) */}
             <div className="flex items-end gap-1 h-[22px] px-0.5 mb-[2px]">
               <span className="w-[1px] h-[8px] bg-white/40" />
@@ -614,7 +614,7 @@ export default function Footer() {
             LEGAL & COPYRIGHT BOTTOM BAR
            ======================================================== */}
         <div className="w-full h-px bg-zinc-800/80 mt-10 sm:mt-14 mb-6 sm:mb-8" />
-        
+
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 font-[family-name:var(--font-urbanist)]">
           <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-3 gap-y-1.5 text-center sm:text-left">
             <span>© 2026 CorAuxis. All rights reserved.</span>
