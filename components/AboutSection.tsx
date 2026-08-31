@@ -88,7 +88,7 @@ export default function AboutSection() {
       id="about"
       className="relative bg-[#f2f2f4] text-zinc-900 py-14 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 overflow-hidden"
     >
-      <div className="max-w-[1760px] w-full mx-auto">
+      <div className="max-w-[1520px] w-full mx-auto">
         {/* Top Header & Badge */}
         <div className="flex flex-col items-start mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-zinc-200/90 border border-zinc-300/80 text-xs font-semibold text-zinc-700 tracking-wide mb-6 shadow-sm">

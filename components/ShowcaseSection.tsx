@@ -227,7 +227,7 @@ export default function ShowcaseSection() {
       id="showcase"
       className="relative bg-[#f2f2f4] text-zinc-900 py-14 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8"
     >
-      <div className="max-w-[1760px] w-full mx-auto">
+      <div className="max-w-[1520px] w-full mx-auto">
         {/* Header Badge */}
         <div ref={badgeRef} className="sc-hidden flex justify-center mb-14 md:mb-20">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-zinc-200 text-xs font-semibold text-zinc-700 tracking-wide shadow-sm">

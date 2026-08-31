@@ -170,11 +170,11 @@ export default function ToolsSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-white text-zinc-900 py-6 sm:py-10 md:py-14 px-3 sm:px-6 md:px-8 lg:px-12 overflow-hidden"
+      className="relative bg-white text-zinc-900 py-10 sm:py-14 md:py-16 px-3 sm:px-6 md:px-8 overflow-hidden"
     >
       <div
         ref={cardRef}
-        className="max-w-[1720px] w-full mx-auto relative rounded-[28px] sm:rounded-[44px] md:rounded-[56px] bg-[#0c0c0e] border border-white/10 shadow-[0_24px_80px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.1)] min-h-[640px] md:min-h-[720px] px-6 sm:px-10 md:px-14 lg:px-16 py-12 sm:py-16 md:py-20 text-white flex items-center overflow-hidden"
+        className="max-w-[1520px] w-full mx-auto relative rounded-[28px] sm:rounded-[44px] md:rounded-[52px] bg-[#0c0c0e] border border-white/10 shadow-[0_24px_80px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.1)] min-h-[600px] md:min-h-[680px] px-6 sm:px-10 md:px-12 lg:px-14 py-12 sm:py-14 md:py-16 text-white flex items-center overflow-hidden"
         style={{
           transform: `scale(${1 - squeezeProgress * 0.07}) translateY(${squeezeProgress * 24}px)`,
           transformOrigin: "center center",
@@ -212,10 +212,10 @@ export default function ToolsSection() {
         {/* ========================================================
             MAIN CONTENT (Left Text & Right Fanned 3D Card Deck)
            ======================================================== */}
-        <div className="relative z-10 flex w-full flex-col justify-between gap-12 lg:flex-row lg:items-center">
+        <div className="relative z-10 flex w-full flex-col justify-between gap-10 lg:flex-row lg:items-center">
           
           {/* ================= LEFT COLUMN ================= */}
-          <div className="w-full lg:w-[40%] flex flex-col items-start">
+          <div className="w-full lg:w-[35%] xl:w-[34%] shrink-0 flex flex-col items-start pr-0 lg:pr-4">
             {/* Badge matching website style */}
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#FD3A25]/25 bg-[#FD3A25]/10 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-white/90 backdrop-blur-md">
               <span className="h-2 w-2 rounded-full bg-[#FD3A25] shadow-[0_0_10px_#FD3A25] animate-pulse" />
@@ -223,7 +223,7 @@ export default function ToolsSection() {
             </div>
 
             {/* Heading with #FD3A25 accent */}
-            <h2 className="text-4xl sm:text-5xl lg:text-[56px] font-bold leading-[1.06] tracking-tight font-[family-name:var(--font-urbanist)] text-white">
+            <h2 className="text-3xl sm:text-4xl lg:text-[46px] xl:text-[50px] font-bold leading-[1.08] tracking-tight font-[family-name:var(--font-urbanist)] text-white">
               We work with
               <br />
               <span className="text-[#FD3A25]">
@@ -233,7 +233,7 @@ export default function ToolsSection() {
             </h2>
 
             {/* Description */}
-            <p className="mt-6 max-w-[480px] text-sm sm:text-base leading-relaxed text-zinc-400 font-medium font-[family-name:var(--font-urbanist)]">
+            <p className="mt-5 max-w-[420px] text-xs sm:text-sm lg:text-sm xl:text-[15px] leading-relaxed text-zinc-400 font-medium font-[family-name:var(--font-urbanist)]">
               We design, build, and evaluate with a modern AI stack—LLMs, vector
               search, orchestration, and observability—so your features are fast,
               reliable, and secure.
@@ -242,7 +242,7 @@ export default function ToolsSection() {
             {/* CTA Button matching 3D capsule website button */}
             <a
               href="#contact"
-              className="mt-8 px-8 py-3.5 rounded-full bg-gradient-to-b from-[#2a2a2e] to-[#121215] text-white text-xs sm:text-sm font-semibold tracking-wide border border-white/25 shadow-[0_12px_24px_-4px_rgba(0,0,0,0.8),0_4px_8px_-2px_rgba(0,0,0,0.5),inset_0_1px_1px_0_rgba(255,255,255,0.3)] transition-all duration-300 hover:scale-105 active:scale-95 hover:from-[#323238] hover:to-[#18181c] inline-flex items-center gap-2.5 group"
+              className="mt-7 px-7 py-3 rounded-full bg-gradient-to-b from-[#2a2a2e] to-[#121215] text-white text-xs sm:text-sm font-semibold tracking-wide border border-white/25 shadow-[0_12px_24px_-4px_rgba(0,0,0,0.8),0_4px_8px_-2px_rgba(0,0,0,0.5),inset_0_1px_1px_0_rgba(255,255,255,0.3)] transition-all duration-300 hover:scale-105 active:scale-95 hover:from-[#323238] hover:to-[#18181c] inline-flex items-center gap-2.5 group"
             >
               <span>Get Started</span>
               <span className="transition-transform duration-300 group-hover:translate-x-1">
@@ -252,18 +252,18 @@ export default function ToolsSection() {
           </div>
 
           {/* ================= RIGHT COLUMN: RESPONSIVE CARDS (Mobile Swipe Carousel & Desktop 3D Fanned Deck) ================= */}
-          <div className="flex flex-col w-full lg:w-[60%] py-4 lg:py-6">
+          <div className="flex flex-col w-full lg:w-[63%] xl:w-[64%] py-4 lg:py-6 overflow-visible">
             {/* Scrollable Track: Horizontal snap carousel on mobile, 3D fanned deck on desktop */}
             <div
               ref={mobileScrollRef}
               onScroll={handleMobileScroll}
-              className="flex w-full items-center justify-start lg:justify-end overflow-x-auto lg:overflow-visible py-4 lg:py-6 px-1 lg:px-6 snap-x snap-mandatory lg:snap-none scrollbar-none"
+              className="flex w-full items-center justify-start lg:justify-end overflow-x-auto lg:overflow-visible py-4 lg:py-6 px-1 lg:pr-3 xl:pr-5 2xl:pr-6 snap-x snap-mandatory lg:snap-none scrollbar-none"
               style={{
                 WebkitOverflowScrolling: "touch",
                 scrollSnapType: "x mandatory",
               }}
             >
-              <div className="flex items-center justify-start lg:justify-center lg:[perspective:1000px] min-w-max lg:min-w-0 gap-4 sm:gap-5 lg:gap-0 pr-6 lg:pr-0">
+              <div className="flex items-center justify-start lg:justify-end lg:[perspective:1000px] min-w-max lg:min-w-0 gap-3.5 sm:gap-4 lg:gap-0 pr-6 lg:pr-0">
                 {toolsDeck.map((tool, index) => {
                   const isHovered = hoveredIdx === index;
                   const isAnyHovered = hoveredIdx !== null;
@@ -277,32 +277,42 @@ export default function ToolsSection() {
                         group
                         relative
                         flex
-                        h-[310px]
-                        w-[240px]
-                        xs:w-[255px]
-                        sm:w-[270px]
-                        lg:h-[345px]
-                        lg:w-[218px]
+                        h-[275px]
+                        w-[205px]
+                        xs:w-[220px]
+                        sm:w-[235px]
+                        lg:h-[265px]
+                        lg:w-[145px]
+                        xl:h-[282px]
+                        xl:w-[158px]
+                        2xl:h-[300px]
+                        2xl:w-[172px]
                         shrink-0
                         snap-center
                         flex-col
                         justify-between
-                        rounded-[24px]
+                        rounded-[20px]
+                        lg:rounded-[22px]
                         border
                         border-white/12
                         bg-gradient-to-b
                         from-[#1a1a20]/95
                         via-[#121216]/95
                         to-[#0b0b0e]/98
-                        p-6
+                        p-3.5
+                        sm:p-4
+                        lg:p-3.5
+                        xl:p-4
                         backdrop-blur-xl
-                        shadow-[0_20px_40px_rgba(0,0,0,0.65),inset_0_1px_1px_rgba(255,255,255,0.15)]
+                        shadow-[0_16px_36px_rgba(0,0,0,0.65),inset_0_1px_1px_rgba(255,255,255,0.15)]
                         transition-all
                         duration-300
                         ease-out
                         cursor-pointer
                         select-none
-                        lg:-ml-18
+                        lg:-ml-8
+                        xl:-ml-10
+                        2xl:-ml-12
                         lg:first:ml-0
                         lg:${tool.rotationClass}
                         ${tool.accentBorder}
@@ -310,7 +320,7 @@ export default function ToolsSection() {
                       style={{
                         zIndex: isHovered ? 50 : index + 1,
                         transform: isHovered
-                          ? "translateY(-24px) scale(1.04) rotate(0deg)"
+                          ? "translateY(-20px) scale(1.04) rotate(0deg)"
                           : isAnyHovered
                           ? "scale(0.97)"
                           : undefined,
@@ -320,39 +330,39 @@ export default function ToolsSection() {
                       }}
                     >
                       {/* Top Edge White Sheen */}
-                      <div className="absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
+                      <div className="absolute inset-x-3 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
 
                       {/* Card Top: Category Chip & Monospace Card Number */}
                       <div className="flex items-center justify-between w-full">
-                        <span className="text-[10px] font-mono font-bold tracking-wider text-zinc-400 bg-white/[0.06] px-2.5 py-0.5 rounded-full border border-white/5 uppercase">
+                        <span className="text-[9px] font-mono font-bold tracking-wider text-zinc-400 bg-white/[0.06] px-2 py-0.5 rounded-full border border-white/5 uppercase">
                           {tool.category}
                         </span>
-                        <span className="text-xs font-mono font-semibold text-zinc-500 group-hover:text-zinc-300 transition-colors">
+                        <span className="text-[11px] font-mono font-semibold text-zinc-500 group-hover:text-zinc-300 transition-colors">
                           {tool.number}
                         </span>
                       </div>
 
                       {/* Card Center: Large Glowing Tool Icon Container */}
-                      <div className="flex items-center justify-center my-auto py-3">
-                        <div className="w-18 h-18 sm:w-20 sm:h-20 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center p-4 shadow-[0_10px_24px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.12)] group-hover:scale-110 group-hover:border-white/25 transition-all duration-300">
-                          <div className="relative w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center">
+                      <div className="flex items-center justify-center my-auto py-2">
+                        <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-13 lg:h-13 xl:w-15 xl:h-15 rounded-xl bg-white/[0.03] border border-white/10 flex items-center justify-center p-3 shadow-[0_8px_20px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.12)] group-hover:scale-110 group-hover:border-white/25 transition-all duration-300">
+                          <div className="relative w-8 h-8 sm:w-9 sm:h-9 lg:w-8 lg:h-8 xl:w-9 xl:h-9 flex items-center justify-center">
                             <Image
                               src={tool.icon}
                               alt={tool.name}
-                              width={54}
-                              height={54}
-                              className="w-full h-full object-contain filter drop-shadow-[0_4px_12px_rgba(255,255,255,0.15)]"
+                              width={44}
+                              height={44}
+                              className="w-full h-full object-contain filter drop-shadow-[0_4px_10px_rgba(255,255,255,0.15)]"
                             />
                           </div>
                         </div>
                       </div>
 
                       {/* Card Bottom: Tool Name & Descriptive Role */}
-                      <div className="flex flex-col items-start w-full pt-3 border-t border-white/[0.07]">
-                        <h4 className="text-lg font-bold text-white tracking-tight leading-snug font-[family-name:var(--font-urbanist)] group-hover:text-[#FD3A25] transition-colors">
+                      <div className="flex flex-col items-start w-full pt-2.5 border-t border-white/[0.07]">
+                        <h4 className="text-sm sm:text-base lg:text-[14px] xl:text-[15px] font-bold text-white tracking-tight leading-snug font-[family-name:var(--font-urbanist)] group-hover:text-[#FD3A25] transition-colors">
                           {tool.name}
                         </h4>
-                        <p className="text-xs text-zinc-400 font-medium leading-tight mt-0.5 font-[family-name:var(--font-urbanist)]">
+                        <p className="text-[10px] sm:text-xs lg:text-[10px] xl:text-[11px] text-zinc-400 font-medium leading-tight mt-0.5 font-[family-name:var(--font-urbanist)]">
                           {tool.subtitle}
                         </p>
                       </div>

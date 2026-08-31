@@ -191,7 +191,7 @@ export default function Footer() {
           INNER FLOATING FOOTER BOX (Scales on Desktop, Static on Mobile)
          ======================================================== */}
       <div
-        className="relative z-30 max-w-[1720px] w-full mx-auto rounded-[24px] sm:rounded-[44px] md:rounded-[56px] bg-[#0d0d10] border border-white/10 shadow-[0_24px_80px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.1)] p-5 sm:p-10 md:p-14 lg:p-18 overflow-hidden"
+        className="relative z-30 max-w-[1520px] w-full mx-auto rounded-[24px] sm:rounded-[44px] md:rounded-[56px] bg-[#0d0d10] border border-white/10 shadow-[0_24px_80px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.1)] p-5 sm:p-8 md:p-12 lg:p-14 overflow-hidden"
         style={
           !isMobile
             ? {

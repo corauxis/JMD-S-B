@@ -20,9 +20,16 @@ const urbanist = Urbanist({
 });
 
 export const metadata: Metadata = {
-  title: "CorAuxis | Interactive WebGL Liquid Hero Experience",
+  title: "CorAuxis | Engineering Intelligent Automation & Software",
   description:
-    "A production-ready WebGL liquid hover image distortion hero section built with Next.js App Router, Three.js, GSAP, Tailwind CSS, and Lenis smooth scrolling.",
+    "CorAuxis provides end-to-end AI automation, custom software development, digital marketing, and intelligent business transformation solutions.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({
