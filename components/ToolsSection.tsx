@@ -87,8 +87,27 @@ const toolsDeck: ToolCard[] = [
 export default function ToolsSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+  const mobileScrollRef = useRef<HTMLDivElement>(null);
   const [squeezeProgress, setSqueezeProgress] = useState(0);
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  const [activeMobileIndex, setActiveMobileIndex] = useState(0);
+
+  const handleMobileScroll = () => {
+    if (!mobileScrollRef.current) return;
+    const { scrollLeft, clientWidth } = mobileScrollRef.current;
+    const cardWidth = 260;
+    const idx = Math.round(scrollLeft / cardWidth);
+    setActiveMobileIndex(Math.min(Math.max(idx, 0), toolsDeck.length - 1));
+  };
+
+  const scrollToCard = (index: number) => {
+    if (!mobileScrollRef.current) return;
+    const cardWidth = 260;
+    mobileScrollRef.current.scrollTo({
+      left: index * cardWidth,
+      behavior: "smooth",
+    });
+  };
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -232,129 +251,158 @@ export default function ToolsSection() {
             </a>
           </div>
 
-          {/* ================= RIGHT COLUMN: INTERACTIVE 3D FANNED CARD DECK ================= */}
-          <div className="flex w-full items-center justify-center lg:justify-end lg:w-[60%] overflow-x-auto lg:overflow-visible py-8 lg:py-6 scrollbar-none">
-            <div className="flex items-center justify-center [perspective:1000px] min-w-max px-6">
-              {toolsDeck.map((tool, index) => {
-                const isHovered = hoveredIdx === index;
-                const isAnyHovered = hoveredIdx !== null;
+          {/* ================= RIGHT COLUMN: RESPONSIVE CARDS (Mobile Swipe Carousel & Desktop 3D Fanned Deck) ================= */}
+          <div className="flex flex-col w-full lg:w-[60%] py-4 lg:py-6">
+            {/* Scrollable Track: Horizontal snap carousel on mobile, 3D fanned deck on desktop */}
+            <div
+              ref={mobileScrollRef}
+              onScroll={handleMobileScroll}
+              className="flex w-full items-center justify-start lg:justify-end overflow-x-auto lg:overflow-visible py-4 lg:py-6 px-1 lg:px-6 snap-x snap-mandatory lg:snap-none scrollbar-none"
+              style={{
+                WebkitOverflowScrolling: "touch",
+                scrollSnapType: "x mandatory",
+              }}
+            >
+              <div className="flex items-center justify-start lg:justify-center lg:[perspective:1000px] min-w-max lg:min-w-0 gap-4 sm:gap-5 lg:gap-0 pr-6 lg:pr-0">
+                {toolsDeck.map((tool, index) => {
+                  const isHovered = hoveredIdx === index;
+                  const isAnyHovered = hoveredIdx !== null;
 
-                return (
-                  <div
-                    key={tool.id}
-                    onMouseEnter={() => setHoveredIdx(index)}
-                    onMouseLeave={() => setHoveredIdx(null)}
-                    className={`
-                      group
-                      relative
-                      flex
-                      h-[270px]
-                      w-[170px]
-                      xs:h-[290px]
-                      xs:w-[185px]
-                      sm:h-[315px]
-                      sm:w-[200px]
-                      md:h-[330px]
-                      md:w-[210px]
-                      lg:h-[345px]
-                      lg:w-[218px]
-                      flex-col
-                      justify-between
-                      rounded-[24px]
-                      border
-                      border-white/12
-                      bg-gradient-to-b
-                      from-[#1a1a20]/95
-                      via-[#121216]/95
-                      to-[#0b0b0e]/98
-                      p-5
-                      sm:p-6
-                      backdrop-blur-xl
-                      shadow-[0_20px_40px_rgba(0,0,0,0.65),inset_0_1px_1px_rgba(255,255,255,0.15)]
-                      transition-all
-                      duration-300
-                      ease-out
-                      cursor-pointer
-                      select-none
-                      -ml-10
-                      xs:-ml-12
-                      sm:-ml-14
-                      md:-ml-16
-                      lg:-ml-18
-                      first:ml-0
-                      ${tool.rotationClass}
-                      ${tool.accentBorder}
-                    `}
-                    style={{
-                      zIndex: isHovered ? 50 : index + 1,
-                      transform: isHovered
-                        ? "translateY(-28px) scale(1.06) rotate(0deg)"
-                        : isAnyHovered
-                        ? "scale(0.97)"
-                        : undefined,
-                      animation: !isAnyHovered
-                        ? `deckWaveFloat 4.6s ease-in-out ${index * 0.3}s infinite`
-                        : "none",
-                    }}
-                  >
-                    {/* Top Edge White Sheen */}
-                    <div className="absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
-
-                    {/* Card Top: Category Chip & Monospace Card Number */}
-                    <div className="flex items-center justify-between w-full">
-                      <span className="text-[10px] font-mono font-bold tracking-wider text-zinc-400 bg-white/[0.06] px-2.5 py-0.5 rounded-full border border-white/5 uppercase">
-                        {tool.category}
-                      </span>
-                      <span className="text-xs font-mono font-semibold text-zinc-500 group-hover:text-zinc-300 transition-colors">
-                        {tool.number}
-                      </span>
-                    </div>
-
-                    {/* Card Center: Large Glowing Tool Icon Container */}
-                    <div className="flex items-center justify-center my-auto py-2">
-                      <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center p-3.5 sm:p-4 shadow-[0_10px_24px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.12)] group-hover:scale-110 group-hover:border-white/25 transition-all duration-300">
-                        <div className="relative w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center">
-                          <Image
-                            src={tool.icon}
-                            alt={tool.name}
-                            width={54}
-                            height={54}
-                            className="w-full h-full object-contain filter drop-shadow-[0_4px_12px_rgba(255,255,255,0.15)]"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Card Bottom: Tool Name & Descriptive Role */}
-                    <div className="flex flex-col items-start w-full pt-2 border-t border-white/[0.07]">
-                      <h4 className="text-base sm:text-lg font-bold text-white tracking-tight leading-snug font-[family-name:var(--font-urbanist)] group-hover:text-[#FD3A25] transition-colors">
-                        {tool.name}
-                      </h4>
-                      <p className="text-[11px] sm:text-xs text-zinc-400 font-medium leading-tight mt-0.5 font-[family-name:var(--font-urbanist)]">
-                        {tool.subtitle}
-                      </p>
-                    </div>
-
-                    {/* Ground Reflection Accent Line */}
-                    <span
+                  return (
+                    <div
+                      key={tool.id}
+                      onMouseEnter={() => setHoveredIdx(index)}
+                      onMouseLeave={() => setHoveredIdx(null)}
                       className={`
-                        absolute
-                        -bottom-1
-                        left-[15%]
-                        right-[15%]
-                        h-[3px]
-                        rounded-full
-                        opacity-0
-                        group-hover:opacity-100
-                        blur-[2px]
+                        group
+                        relative
+                        flex
+                        h-[310px]
+                        w-[240px]
+                        xs:w-[255px]
+                        sm:w-[270px]
+                        lg:h-[345px]
+                        lg:w-[218px]
+                        shrink-0
+                        snap-center
+                        flex-col
+                        justify-between
+                        rounded-[24px]
+                        border
+                        border-white/12
+                        bg-gradient-to-b
+                        from-[#1a1a20]/95
+                        via-[#121216]/95
+                        to-[#0b0b0e]/98
+                        p-6
+                        backdrop-blur-xl
+                        shadow-[0_20px_40px_rgba(0,0,0,0.65),inset_0_1px_1px_rgba(255,255,255,0.15)]
                         transition-all
                         duration-300
-                        ${tool.glowColor}
+                        ease-out
+                        cursor-pointer
+                        select-none
+                        lg:-ml-18
+                        lg:first:ml-0
+                        lg:${tool.rotationClass}
+                        ${tool.accentBorder}
                       `}
-                    />
-                  </div>
-                );
-              })}
+                      style={{
+                        zIndex: isHovered ? 50 : index + 1,
+                        transform: isHovered
+                          ? "translateY(-24px) scale(1.04) rotate(0deg)"
+                          : isAnyHovered
+                          ? "scale(0.97)"
+                          : undefined,
+                        animation: !isAnyHovered
+                          ? `deckWaveFloat 4.6s ease-in-out ${index * 0.3}s infinite`
+                          : "none",
+                      }}
+                    >
+                      {/* Top Edge White Sheen */}
+                      <div className="absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
+
+                      {/* Card Top: Category Chip & Monospace Card Number */}
+                      <div className="flex items-center justify-between w-full">
+                        <span className="text-[10px] font-mono font-bold tracking-wider text-zinc-400 bg-white/[0.06] px-2.5 py-0.5 rounded-full border border-white/5 uppercase">
+                          {tool.category}
+                        </span>
+                        <span className="text-xs font-mono font-semibold text-zinc-500 group-hover:text-zinc-300 transition-colors">
+                          {tool.number}
+                        </span>
+                      </div>
+
+                      {/* Card Center: Large Glowing Tool Icon Container */}
+                      <div className="flex items-center justify-center my-auto py-3">
+                        <div className="w-18 h-18 sm:w-20 sm:h-20 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center p-4 shadow-[0_10px_24px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.12)] group-hover:scale-110 group-hover:border-white/25 transition-all duration-300">
+                          <div className="relative w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center">
+                            <Image
+                              src={tool.icon}
+                              alt={tool.name}
+                              width={54}
+                              height={54}
+                              className="w-full h-full object-contain filter drop-shadow-[0_4px_12px_rgba(255,255,255,0.15)]"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Card Bottom: Tool Name & Descriptive Role */}
+                      <div className="flex flex-col items-start w-full pt-3 border-t border-white/[0.07]">
+                        <h4 className="text-lg font-bold text-white tracking-tight leading-snug font-[family-name:var(--font-urbanist)] group-hover:text-[#FD3A25] transition-colors">
+                          {tool.name}
+                        </h4>
+                        <p className="text-xs text-zinc-400 font-medium leading-tight mt-0.5 font-[family-name:var(--font-urbanist)]">
+                          {tool.subtitle}
+                        </p>
+                      </div>
+
+                      {/* Ground Reflection Accent Line */}
+                      <span
+                        className={`
+                          absolute
+                          -bottom-1
+                          left-[15%]
+                          right-[15%]
+                          h-[3px]
+                          rounded-full
+                          opacity-0
+                          group-hover:opacity-100
+                          blur-[2px]
+                          transition-all
+                          duration-300
+                          ${tool.glowColor}
+                        `}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Mobile Carousel Navigation & Dot Indicators */}
+            <div className="flex lg:hidden items-center justify-between w-full pt-4 px-2">
+              {/* Swipe hint */}
+              <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider flex items-center gap-1">
+                <span>←</span> Swipe to explore <span>→</span>
+              </span>
+
+              {/* Interactive Dots */}
+              <div className="flex items-center gap-1.5">
+                {toolsDeck.map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => scrollToCard(idx)}
+                    aria-label={`Go to tool ${idx + 1}`}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      activeMobileIndex === idx
+                        ? "w-6 bg-[#FD3A25] shadow-[0_0_8px_#FD3A25]"
+                        : "w-1.5 bg-white/20 hover:bg-white/40"
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 

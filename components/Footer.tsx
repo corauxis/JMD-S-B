@@ -532,15 +532,11 @@ export default function Footer() {
             {[
               {
                 label: "LINKEDIN",
-                href: "https://www.linkedin.com/company/jmd-solutions-and-beyond/posts/?feedView=all",
-              },
-              {
-                label: "FACEBOOK",
-                href: "https://www.facebook.com/share/1aib9wbX6V/",
+                href: "linkedin.com/company/corauxis-private-limited/?viewAsMember=true",
               },
               {
                 label: "TWITTER",
-                href: "https://x.com/jmd_sol_beyond?s=21",
+                href: "https://x.com/Corauxis",
               },
               {
                 label: "INSTAGRAM",
@@ -548,7 +544,7 @@ export default function Footer() {
               },
               {
                 label: "YOUTUBE",
-                href: "https://youtube.com/@jmdsolutionbeyond?si=UUOXooZ6-wAbl_hb",
+                href: "www.youtube.com/@Corauxis",
               },
             ].map((social) => (
               <a
