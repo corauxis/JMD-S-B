@@ -135,8 +135,6 @@ function LiquidImage({
 }
 */
 
-import Logo3DCanvas from "./Logo3DCanvas";
-
 interface LiquidHeroProps {
   image?: string;
   eyebrow?: string;
@@ -334,9 +332,13 @@ export default function LiquidHero({
           </div>
         </div>
 
-        {/* Shifted Right 3D Interactive CORAUXIS Model */}
+        {/* Shifted Right Brand Logo Image */}
         <div className="liquid-hero__title-container">
-          <Logo3DCanvas className="w-full max-w-[850px] h-[130px] sm:h-[170px] md:h-[220px] lg:h-[260px] xl:h-[280px]" />
+          <img
+            src="/images/logo.png"
+            alt="CORAUXIS"
+            className="w-full max-w-[440px] xs:max-w-[500px] sm:max-w-[620px] md:max-w-[720px] lg:max-w-[840px] xl:max-w-[920px] h-auto object-contain select-none pointer-events-none drop-shadow-[0_8px_30px_rgba(0,0,0,0.8)]"
+          />
         </div>
 
       </div>

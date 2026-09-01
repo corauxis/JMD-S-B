@@ -580,12 +580,12 @@ export default function Footer() {
             BOTTOM: Giant CORAUXIS Brand Logo & Inline Copyright Meter
            ======================================================== */}
         <div className="relative w-full flex flex-col sm:flex-row sm:items-end justify-between gap-6 pt-2 sm:pt-4">
-          {/* Giant Brand Still 3D Logo */}
+          {/* Giant Brand Logo */}
           <div className="shrink min-w-0 max-w-[85vw] sm:max-w-[70vw] flex items-center justify-start">
-            <Logo3DCanvas
-              autoRotate={false}
-              interactive={false}
-              className="w-[280px] xs:w-[320px] sm:w-[460px] md:w-[580px] lg:w-[720px] h-[55px] xs:h-[65px] sm:h-[85px] md:h-[105px] lg:h-[125px]"
+            <img
+              src="/images/logo.png"
+              alt="CORAUXIS Logo"
+              className="h-14 sm:h-20 md:h-24 lg:h-32 w-auto object-contain select-none"
             />
           </div>
 

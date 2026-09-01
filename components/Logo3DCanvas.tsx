@@ -45,25 +45,25 @@ export default function Logo3DCanvas({
     });
     renderer.setSize(getWidth(), getHeight());
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.4;
+    renderer.toneMapping = THREE.LinearToneMapping;
+    renderer.toneMappingExposure = 1.0;
     container.appendChild(renderer.domElement);
 
-    // 4. Lighting setup
-    const ambientLight = new THREE.AmbientLight(0xffffff, 2.6);
+    // 4. Balanced Studio Lighting setup (prevents wash-out & color shifting)
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.3);
     scene.add(ambientLight);
 
-    const dirLight1 = new THREE.DirectionalLight(0xffffff, 4.5);
-    dirLight1.position.set(6, 9, 8);
-    scene.add(dirLight1);
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.8);
+    keyLight.position.set(4, 7, 8);
+    scene.add(keyLight);
 
-    const dirLight2 = new THREE.DirectionalLight(0xff5533, 3.5);
-    dirLight2.position.set(-6, -3, 6);
-    scene.add(dirLight2);
+    const fillLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    fillLight.position.set(-5, -2, 6);
+    scene.add(fillLight);
 
-    const rimLight = new THREE.DirectionalLight(0xffffff, 3.0);
-    rimLight.position.set(0, 6, -6);
-    scene.add(rimLight);
+    const topRimLight = new THREE.DirectionalLight(0xffffff, 1.2);
+    topRimLight.position.set(0, 8, -4);
+    scene.add(topRimLight);
 
     // 5. Model Container
     const modelGroup = new THREE.Group();
@@ -121,28 +121,29 @@ export default function Logo3DCanvas({
             const name = (mesh.name || "").toLowerCase();
             const parentName = (mesh.parent?.name || "").toLowerCase();
 
-            // If it's the 'A' body or dot, give it vibrant radiant orange-red
-            if (
-              name.includes("a_") ||
-              parentName.includes("a_") ||
-              name.includes("dot") ||
-              parentName.includes("dot")
-            ) {
+            // Precise matching for CORAUXIS 'A' body and dot
+            const isOrangeA =
+              name.includes("a_body") ||
+              name.includes("a_dot") ||
+              parentName.includes("a_body") ||
+              parentName.includes("a_dot");
+
+            if (isOrangeA) {
               mesh.material = new THREE.MeshStandardMaterial({
-                color: new THREE.Color("#FF3B30"),
-                roughness: 0.15,
-                metalness: 0.2,
-                emissive: new THREE.Color("#FF3B30"),
-                emissiveIntensity: 0.45,
+                color: new THREE.Color("#FD3A25"),
+                roughness: 0.25,
+                metalness: 0.05,
+                emissive: new THREE.Color("#FD3A25"),
+                emissiveIntensity: 0.35,
               });
             } else {
-              // High-end glossy chrome white finish for C, O, R, U, X, I, S
+              // Crisp pure white finish for C, O, R, U, X, I, S
               mesh.material = new THREE.MeshStandardMaterial({
                 color: new THREE.Color("#FFFFFF"),
-                roughness: 0.12,
-                metalness: 0.3,
+                roughness: 0.18,
+                metalness: 0.10,
                 emissive: new THREE.Color("#222222"),
-                emissiveIntensity: 0.2,
+                emissiveIntensity: 0.15,
               });
             }
           }

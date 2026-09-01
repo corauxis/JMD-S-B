@@ -45,40 +45,29 @@ const toolsDeck: ToolCard[] = [
     category: "API ENGINE",
     subtitle: "High-Speed Async APIs",
     icon: "/images/tools/fastapi.png",
-    rotationClass: "-rotate-[1deg] hover:-rotate-0",
+    rotationClass: "rotate-[0deg] hover:-rotate-0",
     accentBorder: "hover:border-[#10B981]/70 hover:shadow-[0_0_35px_rgba(16,185,129,0.35),0_24px_50px_rgba(0,0,0,0.85)]",
     glowColor: "bg-[#10B981] shadow-[0_0_30px_10px_rgba(16,185,129,0.6)]",
   },
   {
-    id: "vector-db",
-    number: "04",
-    name: "Vector DB",
-    category: "VECTOR AI",
-    subtitle: "Embeddings & RAG Search",
-    icon: "/images/tools/vector-db.svg",
-    rotationClass: "rotate-[2deg] hover:-rotate-0",
-    accentBorder: "hover:border-[#F43F5E]/70 hover:shadow-[0_0_35px_rgba(244,63,94,0.35),0_24px_50px_rgba(0,0,0,0.85)]",
-    glowColor: "bg-[#F43F5E] shadow-[0_0_30px_10px_rgba(244,63,94,0.6)]",
-  },
-  {
     id: "react",
-    number: "05",
+    number: "04",
     name: "React",
     category: "FRONTEND",
     subtitle: "Modern Web Interfaces",
     icon: "/images/tools/react.svg",
-    rotationClass: "rotate-[4deg] hover:-rotate-0",
+    rotationClass: "rotate-[3deg] hover:-rotate-0",
     accentBorder: "hover:border-[#00D8FF]/70 hover:shadow-[0_0_35px_rgba(0,216,255,0.35),0_24px_50px_rgba(0,0,0,0.85)]",
     glowColor: "bg-[#00D8FF] shadow-[0_0_30px_10px_rgba(0,216,255,0.6)]",
   },
   {
     id: "flutter",
-    number: "06",
+    number: "05",
     name: "Flutter",
     category: "MOBILE APP",
     subtitle: "Cross-Platform Apps",
     icon: "/images/tools/flutter.svg",
-    rotationClass: "rotate-[7deg] hover:-rotate-0",
+    rotationClass: "rotate-[6deg] hover:-rotate-0",
     accentBorder: "hover:border-[#38BDF8]/70 hover:shadow-[0_0_35px_rgba(56,189,248,0.35),0_24px_50px_rgba(0,0,0,0.85)]",
     glowColor: "bg-[#38BDF8] shadow-[0_0_30px_10px_rgba(56,189,248,0.6)]",
   },
@@ -223,17 +212,15 @@ export default function ToolsSection() {
             <h2 className="text-3xl sm:text-4xl lg:text-[46px] xl:text-[50px] font-bold leading-[1.08] tracking-tight font-[family-name:var(--font-urbanist)] text-white">
               We work with
               <br />
+              the{" "}
               <span className="text-[#FD3A25]">
-                powerful
-              </span>{" "}
-              AI tools
+                modern tech stack
+              </span>
             </h2>
 
             {/* Description */}
             <p className="mt-4 sm:mt-5 max-w-[420px] text-xs sm:text-sm lg:text-sm xl:text-[15px] leading-relaxed text-zinc-400 font-medium font-[family-name:var(--font-urbanist)]">
-              We design, build, and evaluate with a modern AI stack—LLMs, vector
-              search, orchestration, and observability—so your features are fast,
-              reliable, and secure.
+              We engineer full-scale digital systems with a modern tech stack—high-performance backend logic, robust databases, scalable APIs, and cross-platform web &amp; mobile interfaces—built for speed, reliability, and scale.
             </p>
 
             {/* CTA Button matching 3D capsule website button */}
