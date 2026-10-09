@@ -59,7 +59,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
       // 1.0s Initial Hold Delay as requested
       tl.to({}, { duration: 1.0 });
 
-      // Snappy Pure White Light Sweep Moving Across "CORAUXIS"
+      // Snappy Pure White Light Sweep Moving Across "JMD SOLUTIONS AND BEYOND"
       tl.fromTo(
         textShineRef.current,
         {
@@ -97,7 +97,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
       <div className="flex items-center justify-center w-full h-full px-6">
         <div
           ref={textShineRef}
-          className="text-center font-black tracking-[-0.03em] uppercase will-change-[background-position,filter,transform] font-[family-name:var(--font-urbanist)] text-[clamp(60px,11vw,150px)] leading-none select-none"
+          className="text-center font-black tracking-[-0.03em] uppercase will-change-[background-position,filter,transform] font-[family-name:var(--font-urbanist)] text-[clamp(26px,5.5vw,84px)] leading-tight select-none max-w-5xl"
           style={{
             background:
               "linear-gradient(90deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.45) 30%, #ffffff 50%, rgba(255, 255, 255, 0.45) 70%, rgba(255, 255, 255, 0.15) 100%)",
@@ -106,7 +106,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
             WebkitTextFillColor: "transparent",
           }}
         >
-          CORAUXIS
+          JMD SOLUTIONS AND BEYOND
         </div>
       </div>
     </div>

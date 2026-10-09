@@ -76,34 +76,28 @@ const projects: ProjectItem[] = [
 ];
 
 function useRevealOnScroll(ref: React.RefObject<HTMLElement | null>, prefix: string) {
-  const prefixRef = useRef(prefix);
-  prefixRef.current = prefix;
-
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const p = prefixRef.current;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        const px = prefixRef.current;
         if (entry.isIntersecting) {
-          el.classList.add(px + "-revealed");
-          el.classList.remove(px + "-hidden");
+          el.classList.add(prefix + "-revealed");
+          el.classList.remove(prefix + "-hidden");
         } else {
-          el.classList.remove(px + "-revealed");
-          el.classList.add(px + "-hidden");
+          el.classList.remove(prefix + "-revealed");
+          el.classList.add(prefix + "-hidden");
         }
       },
       { threshold: 0.15 }
     );
 
     // Set initial hidden class
-    el.classList.add(p + "-hidden");
+    el.classList.add(prefix + "-hidden");
     observer.observe(el);
     return () => observer.disconnect();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ref]);
+  }, [ref, prefix]);
 }
 
 function ProjectCard({ project, idx }: { project: (typeof projects)[0]; idx: number }) {

@@ -170,7 +170,7 @@ export default function Logo3DCanvas({
 
     // 7. Animation loop
     let animationFrameId: number;
-    let clock = new THREE.Clock();
+    const clock = new THREE.Clock();
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
@@ -225,7 +225,7 @@ export default function Logo3DCanvas({
         <div className="absolute inset-0 flex items-center justify-center opacity-70 transition-opacity">
           <img
             src="/images/logo.png"
-            alt="CORAUXIS"
+            alt="JMD Solutions and Beyond"
             className="h-16 sm:h-24 md:h-28 w-auto object-contain select-none"
           />
         </div>

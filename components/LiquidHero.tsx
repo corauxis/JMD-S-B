@@ -149,7 +149,7 @@ export default function LiquidHero({
   image = "/images/bg.png",
   eyebrow = "AI AUTOMATION • SOFTWARE DEVELOPMENT • DIGITAL TRANSFORMATION",
   withinText = "within 24 hours.",
-  title = "CORAUXIS",
+  title = "JMD SOLUTIONS AND BEYOND",
 }: LiquidHeroProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -236,12 +236,12 @@ export default function LiquidHero({
       <span className="liquid-hero__plus" style={{ top: "63%", right: "23%" }}>+</span>
       <span className="liquid-hero__plus" style={{ top: "52%", right: "10%" }}>+</span>
 
-      {/* Top Header Navigation with CORAUXIS Logo Image */}
+      {/* Top Header Navigation with JMD Solutions and Beyond Logo Image */}
       <nav className="liquid-hero__nav">
         <a href="#" className="liquid-hero__logo flex items-center">
           <img
             src="/images/logo.png"
-            alt="CORAUXIS Logo"
+            alt="JMD Solutions and Beyond Logo"
             className="h-6 sm:h-8 md:h-9 w-auto object-contain"
           />
         </a>
@@ -304,7 +304,7 @@ export default function LiquidHero({
         </div>
       </div>
 
-      {/* Bottom Row: Left Info (Tag + Meter) & Shifted Right 3D CORAUXIS Model */}
+      {/* Bottom Row: Left Info (Tag + Meter) & Shifted Right Brand Logo */}
       <div className="liquid-hero__bottom-row">
 
         {/* Bottom Left Info Stack */}
@@ -336,7 +336,7 @@ export default function LiquidHero({
         <div className="liquid-hero__title-container">
           <img
             src="/images/logo.png"
-            alt="CORAUXIS"
+            alt="JMD Solutions and Beyond"
             className="w-full max-w-[440px] xs:max-w-[500px] sm:max-w-[620px] md:max-w-[720px] lg:max-w-[840px] xl:max-w-[920px] h-auto object-contain select-none pointer-events-none drop-shadow-[0_8px_30px_rgba(0,0,0,0.8)]"
           />
         </div>

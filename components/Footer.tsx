@@ -27,7 +27,7 @@ export default function Footer() {
   });
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [honeypot, setHoneypot] = useState("");
-  const [loadTime, setLoadTime] = useState(0);
+  const loadTimeRef = useRef(0);
   const [loading, setLoading] = useState(false);
   const [statusMsg, setStatusMsg] = useState<{
     type: "success" | "error" | "";
@@ -37,7 +37,7 @@ export default function Footer() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    setLoadTime(Date.now());
+    loadTimeRef.current = Date.now();
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 640);
     };
@@ -121,7 +121,7 @@ export default function Footer() {
         body: JSON.stringify({
           ...formData,
           hp_field: honeypot,
-          loadTime,
+          loadTime: loadTimeRef.current,
         }),
       });
 
@@ -577,14 +577,14 @@ export default function Footer() {
         <div className="w-full h-px bg-zinc-800/80 mt-8 mb-10 sm:mb-14" />
 
         {/* ========================================================
-            BOTTOM: Giant CORAUXIS Brand Logo & Inline Copyright Meter
+            BOTTOM: Giant JMD Solutions and Beyond Brand Logo & Inline Copyright Meter
            ======================================================== */}
         <div className="relative w-full flex flex-col sm:flex-row sm:items-end justify-between gap-6 pt-2 sm:pt-4">
           {/* Giant Brand Logo */}
           <div className="shrink min-w-0 max-w-[85vw] sm:max-w-[70vw] flex items-center justify-start">
             <img
               src="/images/logo.png"
-              alt="CORAUXIS Logo"
+              alt="JMD Solutions and Beyond Logo"
               className="h-14 sm:h-20 md:h-24 lg:h-32 w-auto object-contain select-none"
             />
           </div>
@@ -617,7 +617,7 @@ export default function Footer() {
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 font-[family-name:var(--font-urbanist)]">
           <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-3 gap-y-1.5 text-center sm:text-left">
-            <span>© 2026 CorAuxis. All rights reserved.</span>
+            <span>© 2026 JMD Solutions and Beyond. All rights reserved.</span>
             <span>•</span>
             <a href="/terms" className="hover:text-zinc-300 transition-colors">Terms &amp; Conditions</a>
             <span>•</span>

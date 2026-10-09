@@ -57,7 +57,7 @@ export async function POST(req: Request) {
         Referer: "https://corauxis.com",
       },
       body: JSON.stringify({
-        _subject: `New CorAuxis Inquiry: ${firstName} ${lastName} (${category || "General"})`,
+        _subject: `New JMD Solutions and Beyond Inquiry: ${firstName} ${lastName} (${category || "General"})`,
         _template: "table",
         _captcha: "false",
         "Full Name": `${firstName} ${lastName}`,

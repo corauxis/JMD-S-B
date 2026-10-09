@@ -3,8 +3,8 @@ import Link from "next/link";
 import { ArrowLeft, FileText, Scale, ShieldAlert, CheckCircle2 } from "lucide-react";
 
 export const metadata = {
-  title: "Terms & Conditions | CorAuxis Private Limited",
-  description: "Official Terms and Conditions governing access to and use of websites, digital platforms, software, and services provided by CorAuxis Private Limited.",
+  title: "Terms & Conditions | JMD Solutions and Beyond Private Limited",
+  description: "Official Terms and Conditions governing access to and use of websites, digital platforms, software, and services provided by JMD Solutions and Beyond Private Limited.",
 };
 
 export default function TermsPage() {
@@ -25,7 +25,7 @@ export default function TermsPage() {
           <Link href="/" className="flex items-center">
             <img
               src="/images/logo.png"
-              alt="CorAuxis"
+              alt="JMD Solutions and Beyond"
               className="h-6 sm:h-7 w-auto object-contain"
             />
           </Link>
@@ -48,13 +48,13 @@ export default function TermsPage() {
           <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-zinc-400 font-mono">
             <span className="text-[#FD3A25] font-semibold">Last Updated: 31 August 2026</span>
             <span>•</span>
-            <span>CorAuxis Private Limited</span>
+            <span>JMD Solutions and Beyond Private Limited</span>
           </div>
           <p className="mt-6 text-zinc-300 text-sm sm:text-base leading-relaxed">
-            These Terms and Conditions (&ldquo;Terms&rdquo;, &ldquo;Terms and Conditions&rdquo;) govern your access to and use of the website, digital platforms, software, products, services and related offerings provided by CorAuxis Private Limited (&ldquo;CorAuxis&rdquo;, &ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo; or &ldquo;our&rdquo;).
+            These Terms and Conditions (&ldquo;Terms&rdquo;, &ldquo;Terms and Conditions&rdquo;) govern your access to and use of the website, digital platforms, software, products, services and related offerings provided by JMD Solutions and Beyond Private Limited (&ldquo;JMD Solutions and Beyond&rdquo;, &ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo; or &ldquo;our&rdquo;).
           </p>
           <p className="mt-3 text-zinc-400 text-sm leading-relaxed">
-            By accessing, browsing or using our website or engaging with any service provided by CorAuxis, you acknowledge that you have read, understood and agreed to be bound by these Terms. If you do not agree with these Terms, please do not use our website or services.
+            By accessing, browsing or using our website or engaging with any service provided by JMD Solutions and Beyond, you acknowledge that you have read, understood and agreed to be bound by these Terms. If you do not agree with these Terms, please do not use our website or services.
           </p>
         </div>
 
@@ -64,10 +64,10 @@ export default function TermsPage() {
           {/* Section 1 */}
           <section className="bg-zinc-900/40 border border-zinc-800/80 rounded-2xl p-6 sm:p-8 backdrop-blur-sm">
             <h2 className="text-lg sm:text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <span className="text-[#FD3A25]">1.</span> About CorAuxis
+              <span className="text-[#FD3A25]">1.</span> About JMD Solutions and Beyond
             </h2>
             <p className="mb-3">
-              CorAuxis Private Limited is a technology and digital services company providing services that may include, without limitation:
+              JMD Solutions and Beyond Private Limited is a technology and digital services company providing services that may include, without limitation:
             </p>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-zinc-400 pl-2 mb-4">
               <li className="flex items-start gap-2"><span className="text-[#FD3A25]">✦</span> Website design and development</li>
@@ -87,7 +87,7 @@ export default function TermsPage() {
               Specific services, deliverables, timelines, pricing and commercial terms may be separately agreed through a proposal, quotation, statement of work, purchase order, work order, service agreement or other written communication.
             </p>
             <p className="text-xs text-zinc-500 italic">
-              Where a separate written agreement exists between CorAuxis and a client, the terms of that agreement will prevail over these Terms to the extent of any inconsistency.
+              Where a separate written agreement exists between JMD Solutions and Beyond and a client, the terms of that agreement will prevail over these Terms to the extent of any inconsistency.
             </p>
           </section>
 
@@ -96,7 +96,7 @@ export default function TermsPage() {
             <h2 className="text-lg sm:text-xl font-bold text-white mb-4 flex items-center gap-2">
               <span className="text-[#FD3A25]">2.</span> Acceptance of Terms
             </h2>
-            <p className="mb-3">By using this website or contacting, engaging or purchasing services from CorAuxis, you agree that:</p>
+            <p className="mb-3">By using this website or contacting, engaging or purchasing services from JMD Solutions and Beyond, you agree that:</p>
             <ul className="list-disc list-inside space-y-1.5 text-zinc-400 pl-2">
               <li>You have the legal capacity to enter into a binding agreement;</li>
               <li>The information you provide to us is accurate and complete;</li>
@@ -121,7 +121,7 @@ export default function TermsPage() {
               <li>Introduce malware, viruses, malicious code or other harmful material;</li>
               <li>Attempt to interfere with the operation or security of the website;</li>
               <li>Scrape, copy, reproduce or systematically extract website content without our written permission;</li>
-              <li>Impersonate CorAuxis, its employees, representatives or other users;</li>
+              <li>Impersonate JMD Solutions and Beyond, its employees, representatives or other users;</li>
               <li>Use our website to transmit spam, phishing attempts or other unauthorised communications;</li>
               <li>Use our website in a manner that may damage our reputation, systems or business;</li>
               <li>Circumvent any security, authentication or access-control mechanism.</li>
@@ -154,7 +154,7 @@ export default function TermsPage() {
                 <span className="text-[#FD3A25]">5.</span> Services
               </h2>
               <p className="text-sm text-zinc-400">
-                CorAuxis provides professional technology and digital services based on the scope agreed with each client (deliverables, milestones, revisions, third-party integrations, hosting, maintenance, IP ownership). These are documented in proposals or service agreements. A website enquiry does not by itself create an obligation to provide services.
+                JMD Solutions and Beyond provides professional technology and digital services based on the scope agreed with each client (deliverables, milestones, revisions, third-party integrations, hosting, maintenance, IP ownership). These are documented in proposals or service agreements. A website enquiry does not by itself create an obligation to provide services.
               </p>
             </div>
 
@@ -172,7 +172,7 @@ export default function TermsPage() {
                 <span className="text-[#FD3A25]">7.</span> Client Responsibilities
               </h2>
               <p className="text-sm text-zinc-400">
-                The client is responsible for providing accurate, complete and timely information (branding, content, specifications, API keys, credentials, approvals) reasonably required to deliver the services. CorAuxis shall not be responsible for delays resulting from inaccurate or delayed client materials.
+                The client is responsible for providing accurate, complete and timely information (branding, content, specifications, API keys, credentials, approvals) reasonably required to deliver the services. JMD Solutions and Beyond shall not be responsible for delays resulting from inaccurate or delayed client materials.
               </p>
             </div>
 
@@ -211,7 +211,7 @@ export default function TermsPage() {
                 <span className="text-[#FD3A25]">11.</span> Refunds and Cancellation
               </h2>
               <p className="text-sm text-zinc-400">
-                Amounts paid for work already performed, committed resources, licences, or third-party purchases are non-refundable. Where a project is cancelled after work has commenced, CorAuxis may invoice for work completed up to the date of cancellation.
+                Amounts paid for work already performed, committed resources, licences, or third-party purchases are non-refundable. Where a project is cancelled after work has commenced, JMD Solutions and Beyond may invoice for work completed up to the date of cancellation.
               </p>
             </div>
           </section>
@@ -223,7 +223,7 @@ export default function TermsPage() {
                 <span className="text-[#FD3A25]">12.</span> Intellectual Property
               </h2>
               <p className="text-sm text-zinc-400">
-                Unless otherwise agreed in writing, all pre-existing IP, frameworks, libraries, templates, algorithms, reusable components, and AI workflows developed by CorAuxis remain our property. Client-specific IP transfer is subject to full payment of all amounts due.
+                Unless otherwise agreed in writing, all pre-existing IP, frameworks, libraries, templates, algorithms, reusable components, and AI workflows developed by JMD Solutions and Beyond remain our property. Client-specific IP transfer is subject to full payment of all amounts due.
               </p>
             </div>
 
@@ -232,7 +232,7 @@ export default function TermsPage() {
                 <span className="text-[#FD3A25]">13.</span> Client Materials
               </h2>
               <p className="text-sm text-zinc-400">
-                Clients retain ownership of materials provided to us and grant CorAuxis a limited licence to use them solely to deliver contracted services. Clients warrant they have the necessary rights to provide such materials.
+                Clients retain ownership of materials provided to us and grant JMD Solutions and Beyond a limited licence to use them solely to deliver contracted services. Clients warrant they have the necessary rights to provide such materials.
               </p>
             </div>
 
@@ -241,7 +241,7 @@ export default function TermsPage() {
                 <span className="text-[#FD3A25]">14.</span> Portfolio and Marketing Rights
               </h2>
               <p className="text-sm text-zinc-400">
-                Unless expressly prohibited in a written agreement, CorAuxis may identify completed projects or client relationships in its portfolio and marketing materials while respecting strict confidentiality obligations.
+                Unless expressly prohibited in a written agreement, JMD Solutions and Beyond may identify completed projects or client relationships in its portfolio and marketing materials while respecting strict confidentiality obligations.
               </p>
             </div>
           </section>
@@ -253,7 +253,7 @@ export default function TermsPage() {
                 <span className="text-[#FD3A25]">15.</span> Third-Party Services
               </h2>
               <p className="text-sm text-zinc-400">
-                Our services may integrate with third-party platforms (cloud hosting, payment gateways, Google, Meta, WhatsApp, CRM, AI APIs). CorAuxis is not responsible for third-party outages, API changes, pricing changes, or policy updates.
+                Our services may integrate with third-party platforms (cloud hosting, payment gateways, Google, Meta, WhatsApp, CRM, AI APIs). JMD Solutions and Beyond is not responsible for third-party outages, API changes, pricing changes, or policy updates.
               </p>
             </div>
 
@@ -262,7 +262,7 @@ export default function TermsPage() {
                 <span className="text-[#FD3A25]">16.</span> Software, SaaS and Technology Products
               </h2>
               <p className="text-sm text-zinc-400">
-                Where CorAuxis provides software or SaaS products on a subscription basis, users must keep account credentials secure. Nothing in these Terms grants ownership of CorAuxis software unless expressly agreed in writing.
+                Where JMD Solutions and Beyond provides software or SaaS products on a subscription basis, users must keep account credentials secure. Nothing in these Terms grants ownership of JMD Solutions and Beyond software unless expressly agreed in writing.
               </p>
             </div>
           </section>
@@ -352,7 +352,7 @@ export default function TermsPage() {
                 <span className="text-[#FD3A25]">27.</span> Limitation of Liability
               </h2>
               <p className="text-sm text-zinc-400">
-                To the maximum extent permitted by law, CorAuxis shall not be liable for indirect, incidental, or consequential damages. For paid services, our aggregate liability shall not exceed the fees actually paid to CorAuxis for the specific services giving rise to the claim.
+                To the maximum extent permitted by law, JMD Solutions and Beyond shall not be liable for indirect, incidental, or consequential damages. For paid services, our aggregate liability shall not exceed the fees actually paid to JMD Solutions and Beyond for the specific services giving rise to the claim.
               </p>
             </div>
 
@@ -361,7 +361,7 @@ export default function TermsPage() {
                 <span className="text-[#FD3A25]">28.</span> Indemnification
               </h2>
               <p className="text-sm text-zinc-400">
-                You agree to indemnify and hold harmless CorAuxis and its directors, officers, and employees from claims arising from your unlawful use of the website, breach of these Terms, or violation of third-party rights.
+                You agree to indemnify and hold harmless JMD Solutions and Beyond and its directors, officers, and employees from claims arising from your unlawful use of the website, breach of these Terms, or violation of third-party rights.
               </p>
             </div>
           </section>
@@ -382,7 +382,7 @@ export default function TermsPage() {
                 <span className="text-[#FD3A25]">30.</span> Force Majeure
               </h2>
               <p className="text-sm text-zinc-400">
-                CorAuxis shall not be responsible for failure or delays caused by events beyond reasonable control (natural disasters, war, pandemic, government actions, power/internet grid failures).
+                JMD Solutions and Beyond shall not be responsible for failure or delays caused by events beyond reasonable control (natural disasters, war, pandemic, government actions, power/internet grid failures).
               </p>
             </div>
 
@@ -417,7 +417,7 @@ export default function TermsPage() {
             <p><strong className="text-white">35. Severability:</strong> If any provision is found unenforceable, remaining provisions continue in full force.</p>
             <p><strong className="text-white">36. Waiver:</strong> Failure to enforce any provision does not waive our right to enforce it later.</p>
             <p><strong className="text-white">37. Entire Agreement:</strong> These Terms and any specific signed agreement constitute the entire understanding between parties.</p>
-            <p><strong className="text-white">38. Assignment:</strong> You may not assign rights without prior written consent. CorAuxis may assign rights as part of corporate restructuring.</p>
+            <p><strong className="text-white">38. Assignment:</strong> You may not assign rights without prior written consent. JMD Solutions and Beyond may assign rights as part of corporate restructuring.</p>
             <p><strong className="text-white">39. No Partnership:</strong> Nothing creates a partnership, agency, or franchise relationship.</p>
             <p><strong className="text-white">40. Electronic Communications:</strong> Communications may be conducted electronically pursuant to the Information Technology Act, 2000.</p>
           </section>
@@ -431,7 +431,7 @@ export default function TermsPage() {
               For questions, notices or concerns regarding these Terms, please contact:
             </p>
             <div className="bg-black/40 border border-zinc-800 rounded-xl p-4 sm:p-5 text-xs sm:text-sm space-y-1.5">
-              <p className="font-bold text-white text-base">CorAuxis Private Limited</p>
+              <p className="font-bold text-white text-base">JMD Solutions and Beyond Private Limited</p>
               <p><strong className="text-zinc-400">Email:</strong> <a href="mailto:contact@corauxis.com" className="text-[#FD3A25] hover:underline">contact@corauxis.com</a></p>
               <p><strong className="text-zinc-400">Registered Office:</strong> 12th floor, One West, Balewadi High St, Baner, Pune, Maharashtra 411045</p>
               <p><strong className="text-zinc-400">Website:</strong> <a href="https://corauxis.com" className="text-[#FD3A25] hover:underline">https://corauxis.com</a></p>
@@ -445,9 +445,9 @@ export default function TermsPage() {
         <div className="mt-14 pt-8 border-t border-zinc-800/80 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
           <div>
             <span className="font-semibold text-zinc-300 block sm:inline">Acknowledgement: </span>
-            <span>By accessing or using the CorAuxis website, you acknowledge that you have read, understood, and agreed to these Terms.</span>
+            <span>By accessing or using the JMD Solutions and Beyond website, you acknowledge that you have read, understood, and agreed to these Terms.</span>
           </div>
-          <span className="font-mono text-zinc-600">© 2026 CorAuxis Private Limited. All Rights Reserved.</span>
+          <span className="font-mono text-zinc-600">© 2026 JMD Solutions and Beyond Private Limited. All Rights Reserved.</span>
         </div>
 
       </main>

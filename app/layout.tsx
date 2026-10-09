@@ -20,9 +20,9 @@ const urbanist = Urbanist({
 });
 
 export const metadata: Metadata = {
-  title: "CorAuxis | Engineering Intelligent Automation & Software",
+  title: "JMD Solutions and Beyond | Engineering Intelligent Automation & Software",
   description:
-    "CorAuxis provides end-to-end AI automation, custom software development, digital marketing, and intelligent business transformation solutions.",
+    "JMD Solutions and Beyond provides end-to-end AI automation, custom software development, digital marketing, and intelligent business transformation solutions.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },

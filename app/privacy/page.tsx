@@ -3,8 +3,8 @@ import Link from "next/link";
 import { ArrowLeft, ShieldCheck, Mail, Building, Globe, Scale } from "lucide-react";
 
 export const metadata = {
-  title: "Privacy Policy | CorAuxis Private Limited",
-  description: "Official Privacy Policy of CorAuxis Private Limited explaining data collection, usage, protection, and rights under applicable Indian laws including DPDP Act 2023.",
+  title: "Privacy Policy | JMD Solutions and Beyond Private Limited",
+  description: "Official Privacy Policy of JMD Solutions and Beyond Private Limited explaining data collection, usage, protection, and rights under applicable Indian laws including DPDP Act 2023.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -25,7 +25,7 @@ export default function PrivacyPolicyPage() {
           <Link href="/" className="flex items-center">
             <img
               src="/images/logo.png"
-              alt="CorAuxis"
+              alt="JMD Solutions and Beyond"
               className="h-6 sm:h-7 w-auto object-contain"
             />
           </Link>
@@ -48,10 +48,10 @@ export default function PrivacyPolicyPage() {
           <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-zinc-400 font-mono">
             <span className="text-[#FD3A25] font-semibold">Last Updated: 31 August 2026</span>
             <span>•</span>
-            <span>CorAuxis Private Limited</span>
+            <span>JMD Solutions and Beyond Private Limited</span>
           </div>
           <p className="mt-6 text-zinc-300 text-sm sm:text-base leading-relaxed">
-            This Privacy Policy (&ldquo;Privacy Policy&rdquo;) explains how CorAuxis Private Limited (&ldquo;CorAuxis&rdquo;, &ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo; or &ldquo;our&rdquo;) collects, uses, stores, processes and protects information relating to individuals who visit our website, contact us, use our products or services, or otherwise interact with us.
+            This Privacy Policy (&ldquo;Privacy Policy&rdquo;) explains how JMD Solutions and Beyond Private Limited (&ldquo;JMD Solutions and Beyond&rdquo;, &ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo; or &ldquo;our&rdquo;) collects, uses, stores, processes and protects information relating to individuals who visit our website, contact us, use our products or services, or otherwise interact with us.
           </p>
           <p className="mt-3 text-zinc-400 text-sm leading-relaxed">
             We respect your privacy and are committed to handling personal data responsibly and in accordance with applicable laws and regulations. By accessing or using our website or services, you acknowledge that you have read and understood this Privacy Policy.
@@ -67,15 +67,15 @@ export default function PrivacyPolicyPage() {
               <span className="text-[#FD3A25]">1.</span> About Us
             </h2>
             <p className="mb-4">
-              CorAuxis Private Limited is a technology and digital services company providing technology, software, digital marketing, automation, artificial intelligence, web and application development and related professional services.
+              JMD Solutions and Beyond Private Limited is a technology and digital services company providing technology, software, digital marketing, automation, artificial intelligence, web and application development and related professional services.
             </p>
             <p className="mb-5 text-zinc-400">
-              For the purposes of applicable data protection laws, CorAuxis may act as the entity responsible for processing personal data collected through its website, products and services, depending upon the nature and context of the processing.
+              For the purposes of applicable data protection laws, JMD Solutions and Beyond may act as the entity responsible for processing personal data collected through its website, products and services, depending upon the nature and context of the processing.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 bg-black/40 border border-zinc-800 rounded-xl p-4 sm:p-5 text-xs sm:text-sm">
               <div>
                 <span className="text-zinc-500 font-mono block text-xs uppercase">Company Name</span>
-                <span className="font-semibold text-white">CorAuxis Private Limited</span>
+                <span className="font-semibold text-white">JMD Solutions and Beyond Private Limited</span>
               </div>
               <div>
                 <span className="text-zinc-500 font-mono block text-xs uppercase">CIN</span>
@@ -113,7 +113,7 @@ export default function PrivacyPolicyPage() {
               <li className="flex items-start gap-2"><span className="text-[#FD3A25]">✦</span> Recruitment or career forms, where applicable</li>
               <li className="flex items-start gap-2"><span className="text-[#FD3A25]">✦</span> Customer support interactions</li>
               <li className="flex items-start gap-2"><span className="text-[#FD3A25]">✦</span> Events and business communications</li>
-              <li className="flex items-start gap-2"><span className="text-[#FD3A25]">✦</span> Other digital or offline interactions with CorAuxis</li>
+              <li className="flex items-start gap-2"><span className="text-[#FD3A25]">✦</span> Other digital or offline interactions with JMD Solutions and Beyond</li>
             </ul>
             <p className="mt-4 text-xs text-zinc-500 italic">
               This Privacy Policy does not necessarily apply to third-party websites, applications or services that are linked from our website.
@@ -126,7 +126,7 @@ export default function PrivacyPolicyPage() {
               <span className="text-[#FD3A25]">3.</span> What Information We Collect
             </h2>
             <p className="mb-4">
-              Depending on how you interact with CorAuxis, we may collect different categories of information.
+              Depending on how you interact with JMD Solutions and Beyond, we may collect different categories of information.
             </p>
             <h3 className="text-sm sm:text-base font-bold text-white mb-2 text-[#FD3A25]/90">
               3.1 Information You Provide Directly
@@ -297,7 +297,7 @@ export default function PrivacyPolicyPage() {
               Our website or services may integrate with third-party platforms (e.g., Google services, Meta services, WhatsApp, CRM platforms, payment gateways, cloud infrastructure, AI providers).
             </p>
             <p className="text-sm text-zinc-400">
-              Third-party services are governed by their own privacy policies and terms. CorAuxis is not responsible for privacy practices independently carried out by third-party platforms. Users should review the privacy policies of third-party services they interact with.
+              Third-party services are governed by their own privacy policies and terms. JMD Solutions and Beyond is not responsible for privacy practices independently carried out by third-party platforms. Users should review the privacy policies of third-party services they interact with.
             </p>
           </section>
 
@@ -307,7 +307,7 @@ export default function PrivacyPolicyPage() {
               <span className="text-[#FD3A25]">10.</span> AI and Automated Technologies
             </h2>
             <p className="mb-3">
-              Certain CorAuxis products and services may use artificial intelligence, machine learning, automation or third-party AI technologies to generate content, provide automated responses, analyse information, automate workflows, provide recommendations, improve software functionality, or perform business analysis.
+              Certain JMD Solutions and Beyond products and services may use artificial intelligence, machine learning, automation or third-party AI technologies to generate content, provide automated responses, analyse information, automate workflows, provide recommendations, improve software functionality, or perform business analysis.
             </p>
             <p className="text-sm text-zinc-400 mb-2">
               Users should not submit highly sensitive or confidential personal information to AI-enabled services unless the relevant service expressly permits such use.
@@ -323,10 +323,10 @@ export default function PrivacyPolicyPage() {
               <span className="text-[#FD3A25]">11.</span> Client Data
             </h2>
             <p className="mb-3">
-              Where CorAuxis processes personal data provided by a client as part of a contracted service, CorAuxis processes such data according to the client&apos;s documented instructions and the applicable agreement.
+              Where JMD Solutions and Beyond processes personal data provided by a client as part of a contracted service, JMD Solutions and Beyond processes such data according to the client&apos;s documented instructions and the applicable agreement.
             </p>
             <p className="text-sm text-zinc-400">
-              In such circumstances, the client remains responsible for determining the purpose of processing, lawful basis, notices, retention period, and individual rights. Where required, CorAuxis may enter into appropriate data-processing or contractual arrangements with the client.
+              In such circumstances, the client remains responsible for determining the purpose of processing, lawful basis, notices, retention period, and individual rights. Where required, JMD Solutions and Beyond may enter into appropriate data-processing or contractual arrangements with the client.
             </p>
           </section>
 
@@ -410,7 +410,7 @@ export default function PrivacyPolicyPage() {
                 <span className="text-[#FD3A25]">19.</span> International Data Transfers
               </h2>
               <p className="text-sm text-zinc-400">
-                Some service providers used by CorAuxis may process information outside India. Where transfers occur, we implement safeguards required by applicable law and contractual standards.
+                Some service providers used by JMD Solutions and Beyond may process information outside India. Where transfers occur, we implement safeguards required by applicable law and contractual standards.
               </p>
             </div>
 
@@ -419,7 +419,7 @@ export default function PrivacyPolicyPage() {
                 <span className="text-[#FD3A25]">20.</span> Data Breach and Security Incidents
               </h2>
               <p className="text-sm text-zinc-400">
-                If CorAuxis becomes aware of a personal data breach affecting personal data under our control, we will assess the incident, take corrective steps, and notify affected parties and authorities where legally required.
+                If JMD Solutions and Beyond becomes aware of a personal data breach affecting personal data under our control, we will assess the incident, take corrective steps, and notify affected parties and authorities where legally required.
               </p>
             </div>
 
@@ -428,7 +428,7 @@ export default function PrivacyPolicyPage() {
                 <span className="text-[#FD3A25]">21.</span> Links to Third-Party Websites
               </h2>
               <p className="text-sm text-zinc-400">
-                Our website may contain links to third-party websites. CorAuxis is not responsible for the privacy practices, content, or security of external websites.
+                Our website may contain links to third-party websites. JMD Solutions and Beyond is not responsible for the privacy practices, content, or security of external websites.
               </p>
             </div>
 
@@ -463,7 +463,7 @@ export default function PrivacyPolicyPage() {
               <span className="text-[#FD3A25]">24.</span> Applicable Law
             </h2>
             <p className="mb-3 text-sm text-zinc-300">
-              This Privacy Policy shall be governed by the laws applicable in India. The processing of personal data by CorAuxis will be subject to applicable Indian data protection and privacy laws and regulations, as amended or replaced from time to time.
+              This Privacy Policy shall be governed by the laws applicable in India. The processing of personal data by JMD Solutions and Beyond will be subject to applicable Indian data protection and privacy laws and regulations, as amended or replaced from time to time.
             </p>
             <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
               This includes, where applicable, the <strong className="text-white">Digital Personal Data Protection Act, 2023</strong>, the <strong className="text-white">Digital Personal Data Protection Rules, 2025</strong>, the <strong className="text-white">Information Technology Act, 2000</strong>, applicable rules and regulations, and other applicable laws.
@@ -476,10 +476,10 @@ export default function PrivacyPolicyPage() {
               <span className="text-[#FD3A25]">25.</span> Contact Us
             </h2>
             <p className="mb-4 text-sm text-zinc-300">
-              If you have any questions about this Privacy Policy or how CorAuxis handles personal data, please contact us:
+              If you have any questions about this Privacy Policy or how JMD Solutions and Beyond handles personal data, please contact us:
             </p>
             <div className="bg-black/40 border border-zinc-800 rounded-xl p-4 sm:p-5 text-xs sm:text-sm space-y-1.5">
-              <p className="font-bold text-white text-base">CorAuxis Private Limited</p>
+              <p className="font-bold text-white text-base">JMD Solutions and Beyond Private Limited</p>
               <p><strong className="text-zinc-400">Privacy / Legal Email:</strong> <a href="mailto:contact@corauxis.com" className="text-[#FD3A25] hover:underline">contact@corauxis.com</a></p>
               <p><strong className="text-zinc-400">Registered Office:</strong> 12th floor, One West, Balewadi High St, Baner, Pune, Maharashtra 411045</p>
               <p><strong className="text-zinc-400">Website:</strong> <a href="https://corauxis.com" className="text-[#FD3A25] hover:underline">https://corauxis.com</a></p>
@@ -493,9 +493,9 @@ export default function PrivacyPolicyPage() {
         <div className="mt-14 pt-8 border-t border-zinc-800/80 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
           <div>
             <span className="font-semibold text-zinc-300 block sm:inline">Your Privacy Matters. </span>
-            <span>CorAuxis is committed to handling personal data responsibly, transparently and securely.</span>
+            <span>JMD Solutions and Beyond is committed to handling personal data responsibly, transparently and securely.</span>
           </div>
-          <span className="font-mono text-zinc-600">© 2026 CorAuxis Private Limited. All Rights Reserved.</span>
+          <span className="font-mono text-zinc-600">© 2026 JMD Solutions and Beyond Private Limited. All Rights Reserved.</span>
         </div>
 
       </main>

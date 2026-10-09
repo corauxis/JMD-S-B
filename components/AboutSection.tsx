@@ -17,6 +17,9 @@ export default function AboutSection() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsInView(entry.isIntersecting);
+        if (!entry.isIntersecting) {
+          setCount40(0);
+        }
       },
       { threshold: 0.15 }
     );
@@ -28,7 +31,6 @@ export default function AboutSection() {
   // 2. Count-up animation for "40%" stat
   useEffect(() => {
     if (!isInView) {
-      setCount40(0);
       return;
     }
 
