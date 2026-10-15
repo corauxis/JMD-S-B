@@ -48,7 +48,7 @@ const rightFeatures: FeatureCard[] = [
     icon: ShieldCheck,
     title: "Secure by Design",
     description:
-      "PII handling, SSO/SAML, RBAC, secrets management, and compliance workflows—ship AI that's safe, auditable, and enterprise-ready.",
+      "Built with strict PII data handling, RBAC, secrets management, and least-privilege principles throughout.",
   },
   {
     id: "integrations",

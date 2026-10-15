@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Logo3DCanvas from "@/components/Logo3DCanvas";
 
 const categoryOptions = [
   "AI Strategy & Mapping",
@@ -524,40 +523,65 @@ export default function Footer() {
             ))}
           </div>
 
-          {/* Right Socials Column (3 cols) */}
-          <div className="lg:col-span-3 flex flex-col gap-3.5">
-            <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest font-[family-name:var(--font-urbanist)] mb-1">
-              CONNECT
-            </span>
-            {[
-              {
-                label: "LINKEDIN",
-                href: "linkedin.com/company/corauxis-private-limited/?viewAsMember=true",
-              },
-              {
-                label: "TWITTER",
-                href: "https://x.com/Corauxis",
-              },
-              {
-                label: "INSTAGRAM",
-                href: "https://www.instagram.com/jmd_solutions_beyond?igsh=dzVseWNzYXU5aXNs&utm_source=qr",
-              },
-              {
-                label: "YOUTUBE",
-                href: "www.youtube.com/@Corauxis",
-              },
-            ].map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm sm:text-base font-semibold text-zinc-300 hover:text-white transition-colors py-0.5 font-[family-name:var(--font-urbanist)] uppercase tracking-wider flex items-center justify-between group"
-              >
-                <span>{social.label}</span>
-                <span className="text-xs text-zinc-600 group-hover:text-white group-hover:translate-x-0.5 transition-all">↗</span>
-              </a>
-            ))}
+          {/* Right Socials Column & Government Recognition (3 cols) */}
+          <div className="lg:col-span-3 flex flex-col gap-7">
+            <div className="flex flex-col gap-3.5">
+              <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest font-[family-name:var(--font-urbanist)] mb-1">
+                CONNECT
+              </span>
+              {[
+                {
+                  label: "LINKEDIN",
+                  href: "linkedin.com/company/corauxis-private-limited/?viewAsMember=true",
+                },
+                {
+                  label: "TWITTER",
+                  href: "https://x.com/Corauxis",
+                },
+                {
+                  label: "INSTAGRAM",
+                  href: "https://www.instagram.com/jmd_solutions_beyond?igsh=dzVseWNzYXU5aXNs&utm_source=qr",
+                },
+                {
+                  label: "YOUTUBE",
+                  href: "www.youtube.com/@Corauxis",
+                },
+              ].map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm sm:text-base font-semibold text-zinc-300 hover:text-white transition-colors py-0.5 font-[family-name:var(--font-urbanist)] uppercase tracking-wider flex items-center justify-between group"
+                >
+                  <span>{social.label}</span>
+                  <span className="text-xs text-zinc-600 group-hover:text-white group-hover:translate-x-0.5 transition-all">↗</span>
+                </a>
+              ))}
+            </div>
+
+            {/* Government Certification / Recognition Badge */}
+            <div className="flex flex-col gap-2.5 pt-5 border-t border-zinc-800/80">
+              <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest font-[family-name:var(--font-urbanist)]">
+                GOVERNMENT RECOGNITION
+              </span>
+              <div className="inline-flex items-center gap-3 bg-white px-4 py-2.5 rounded-xl w-fit shadow-lg border border-white/20 transition-all duration-300 hover:scale-[1.02]">
+                <img
+                  src="/images/dpiit-startup-india.png"
+                  alt="DPIIT Startup India Certified"
+                  className="h-10 sm:h-11 w-auto object-contain"
+                />
+                <div className="h-7 w-px bg-zinc-300" />
+                <div className="flex flex-col text-left">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-mono">
+                    Govt. of India
+                  </span>
+                  <span className="text-xs font-bold text-zinc-900 leading-tight">
+                    Recognized Startup
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>

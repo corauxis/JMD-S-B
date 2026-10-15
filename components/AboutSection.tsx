@@ -92,14 +92,16 @@ export default function AboutSection() {
     >
       <div className="max-w-[1520px] w-full mx-auto">
         {/* Top Header & Badge */}
-        <div className="flex flex-col items-start mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-zinc-200/90 border border-zinc-300/80 text-xs font-semibold text-zinc-700 tracking-wide mb-6 shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-[#FD3A25]" />
-            About Us
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 sm:mb-16">
+          <div className="flex flex-col items-start max-w-4xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-zinc-200/90 border border-zinc-300/80 text-xs font-semibold text-zinc-700 tracking-wide mb-6 shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-[#FD3A25]" />
+              About Us
+            </div>
+            <h2 className="text-3xl sm:text-5xl md:text-[54px] font-bold tracking-tight text-zinc-900 leading-[1.12] font-[family-name:var(--font-urbanist)]">
+              Engineering Intelligent Automation and Software for Modern Businesses
+            </h2>
           </div>
-          <h2 className="text-3xl sm:text-5xl md:text-[54px] font-bold tracking-tight text-zinc-900 max-w-4xl leading-[1.12] font-[family-name:var(--font-urbanist)]">
-            Engineering Intelligent Automation and Software for Modern Businesses
-          </h2>
         </div>
 
         {/* Bento Grid Layout (7 cols Left / 5 cols Right Split) */}
